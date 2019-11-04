@@ -19,19 +19,19 @@ public class Launcher extends Application {
         stage.setTitle("Pantalla Principal");
         stage.setScene(new Scene(root, 675, 575));
         stage.show();
-        TreeView<File> treeView = new TreeView<File>();
+       /* TreeView<File> treeView = new TreeView<File>();
         TreeItem<File> bandeja = new TreeItem<File>();
         treeView.setShowRoot(false);
         treeView.setRoot(bandeja);
         File [] roots = File.listRoots();
         for(File disk : roots){
             bandeja.getChildren().add(createNode(disk));
-        }
+        }*/
 
 
 
     }
-    private TreeItem<File> createNode(final File f){
+/*    private TreeItem<File> createNode(final File f){
         return new TreeItem<File>(f);
     }
     public ObservableList<TreeItem<File>> buildChildren(TreeItem <File> treeItem){//Este metodo genera un treeItem por cada archivo de la carpeta
@@ -47,7 +47,7 @@ public class Launcher extends Application {
             }
         }
         return FXCollections.emptyObservableList();
-    }
+    }*/
     public static void main(String args[]){
         launch();
     }

@@ -2,6 +2,7 @@ package com.martin.Views;
 
 import com.martin.Logica.Logica;
 import com.martin.Models.Cuenta;
+import com.martin.Models.EmailMensaje;
 import com.martin.Models.IniciarSesion;
 import com.martin.Models.MensajeCorreo;
 import javafx.event.ActionEvent;
@@ -51,7 +52,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private MenuItem itemReenviar;
     @FXML
-    private TableView<MensajeCorreo> tvCorreos;//faltan los tablecolum
+    private TableView<EmailMensaje> tvCorreos;//faltan los tablecolum
     @FXML
     public void AltaCuenta(ActionEvent event){
         try {
@@ -70,21 +71,20 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    private void comprobarUsuario(){
+    private void comprobarUsuario(){//mirar como cuadrar esto
 
         boolean respuesta = inicio.evaluarLogin();
 
         if(respuesta==true){
            // tvCuentas.setItems();//cargamos los dos tablesViews, cuentas y correos
-
-            tvCorreos.setItems(Logica.getInstance().getMensaje());
-
+            Logica.getInstance().cargarMensajes();
+            tvCorreos.setItems(Logica.getInstance().getListaMensajes());
         }
-
-
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        comprobarUsuario();
     }
+    //tambien debo cambiar el fxml de este controlador. Esta mal planteado, arriba hay que ver
+    //la lista de correos, y abajo los propios correos.
 }

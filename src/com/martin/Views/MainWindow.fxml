@@ -16,6 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.stage.Stage?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <Stage xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.martin.Views.MainWindowController">
     <scene>
         <Scene>
@@ -82,8 +83,17 @@
                                                 <children>
                                                    <TableView fx:id="tvCorreos" prefHeight="290.0" prefWidth="406.0">
                                                      <columns>
-                                                       <TableColumn prefWidth="143.0" text="Correo" />
-                                                       <TableColumn prefWidth="122.0" text="Nombre" />
+                                                         <TableColumn id="tcCorreo" prefWidth="114.0" text="Correo">
+                                                             <cellValueFactory>
+                                                                 <PropertyValueFactory property="from"/>
+                                                             </cellValueFactory>
+                                                         </TableColumn>
+                                                         <TableColumn id="tcNombre" prefWidth="114.0" text="Nombre">
+                                                             <cellValueFactory>
+                                                                 <PropertyValueFactory property="content"/>
+                                                             </cellValueFactory>
+                                                         </TableColumn>
+
                                                      </columns>
                                                    </TableView>
                                                 </children>

@@ -10,5 +10,6 @@
     <orderEntry type="library" name="javafx.web" level="application" />
     <orderEntry type="library" name="controlsfx-11.0.0" level="project" />
     <orderEntry type="library" name="javafx13" level="application" />
+    <orderEntry type="library" name="javax.mail" level="application" />
   </component>
 </module>

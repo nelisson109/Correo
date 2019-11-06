@@ -3,6 +3,7 @@ package com.martin.Logica;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.PasswordField;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -26,6 +27,10 @@ public class Logica {
 
         return INSTANCE;
     }
+    public PasswordField getPfContraseña(PasswordField pfContraseña){
+        return pfContraseña;
+    }
+
 /*
     public void addPartido(Partido partido) {
         partidos.add(partido);

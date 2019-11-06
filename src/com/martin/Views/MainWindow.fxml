@@ -53,7 +53,7 @@
                                          <menus>
                                            <Menu fx:id="menuCuentas" mnemonicParsing="false" text="Acción">
                                              <items>
-                                               <MenuItem fx:id="itemAlta" mnemonicParsing="false" text="Alta Cuenta" />
+                                               <MenuItem fx:id="itemAlta" mnemonicParsing="false" onAction="#AltaCuenta" text="Alta Cuenta" />
                                                    <MenuItem fx:id="itemBorrarCuenta" mnemonicParsing="false" text="Borrar Cuenta" />
                                              </items>
                                            </Menu>

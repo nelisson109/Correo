@@ -1,31 +1,31 @@
 package com.martin.Views;
 
+import com.martin.Logica.Logica;
+import com.martin.Models.Cuenta;
 import com.martin.Models.IniciarSesion;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainWindowController implements Initializable {
+    private Cuenta cuenta;
     @FXML
-    private TableView<?> tvCuentas;
+    private TableView<Cuenta> tvCuentas;
     @FXML
-    private TableColumn<?, ?> tcCuenta;
+    private TableColumn<Cuenta, IniciarSesion> tcCuenta;
     @FXML
-    private TableColumn<?, ?> tcTitular;
+    private TableColumn<Cuenta, String> tcTitular;
     @FXML
     private MenuBar menuCuenta;
     @FXML
@@ -49,25 +49,37 @@ public class MainWindowController implements Initializable {
     @FXML
     private MenuItem itemReenviar;
     @FXML
-    private TableView<?> tvCorreos;
+    private TableView<?> tvCorreos;//faltan los tablecolum
     @FXML
-    public void comprobarUsuario(){
+    public void AltaCuenta(ActionEvent event){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VentanaLogin.fxml"));
             Parent root = fxmlLoader.load();
-            VentanaLoginController loginController = fxmlLoader.getController();
-            IniciarSesion inicio =
-            /* Partido partido = tvpartidos.getSelectionModel().getSelectedItem();
-            controller.setPartidoModificar(partido);*/
+
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Inicio Sesión");
             stage.setScene(new Scene(root, 500, 575));
             stage.showAndWait();
-
+            comprobarUsuario();
+            //poner metodo comprobar
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    private void comprobarUsuario(IniciarSesion inicio){
+
+        boolean respuesta = inicio.evaluarLogin();
+
+        if(respuesta==true){
+           // tvCuentas.setItems();//cargamos los dos tablesViews, cuentas y correos
+
+            tvCorreos.setItems(Logica.getInstance().getMensaje());
+
+        }
+
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

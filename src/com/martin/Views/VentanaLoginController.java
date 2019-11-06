@@ -35,11 +35,6 @@ public class VentanaLoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        IniciarSesion inicio = new IniciarSesion(tfCorreo, pfContraseña);
-        boolean respuesta = inicio.evaluarLogin();
 
-        if(respuesta==true){
-
-        }
     }
 }

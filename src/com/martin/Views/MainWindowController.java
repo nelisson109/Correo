@@ -3,6 +3,7 @@ package com.martin.Views;
 import com.martin.Logica.Logica;
 import com.martin.Models.Cuenta;
 import com.martin.Models.IniciarSesion;
+import com.martin.Models.MensajeCorreo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 
 public class MainWindowController implements Initializable {
     private Cuenta cuenta;
+    private IniciarSesion inicio;
     @FXML
     private TableView<Cuenta> tvCuentas;
     @FXML
@@ -49,7 +51,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private MenuItem itemReenviar;
     @FXML
-    private TableView<?> tvCorreos;//faltan los tablecolum
+    private TableView<MensajeCorreo> tvCorreos;//faltan los tablecolum
     @FXML
     public void AltaCuenta(ActionEvent event){
         try {
@@ -68,7 +70,7 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    private void comprobarUsuario(IniciarSesion inicio){
+    private void comprobarUsuario(){
 
         boolean respuesta = inicio.evaluarLogin();
 

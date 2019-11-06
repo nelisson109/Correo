@@ -1,6 +1,8 @@
 package com.martin.Logica;
 
 
+import com.martin.Models.Cuenta;
+import com.martin.Models.EmailMensaje;
 import com.martin.Models.IniciarSesion;
 import com.martin.Models.MensajeCorreo;
 import javafx.collections.FXCollections;
@@ -16,8 +18,8 @@ public class Logica {
   /*  private ObservableList<Partido> partidos = FXCollections.observableArrayList();
     private ArrayList<Partido> partidos1 = new ArrayList<>();
     private ArrayList<Partido> partidos2 = new ArrayList<Partido>();*/
-    private ObservableList<Message> listaMensajes = FXCollections.observableArrayList();
-    private ObservableList<> listaCuentas = FXCollections.observableArrayList();
+    private ObservableList<MensajeCorreo> listaMensajes = FXCollections.observableArrayList();//esta mal, no se le puede pasar Message, hay que pasarle EmailMensaje
+    private ObservableList<Cuenta> listaCuentas = FXCollections.observableArrayList();
     private MensajeCorreo mensaje;
     private ObjectInputStream lectura;
     private ObjectOutputStream escritura;
@@ -33,10 +35,11 @@ public class Logica {
 
         return INSTANCE;
     }
-    public ObservableList getMensaje(){
+    public ObservableList<MensajeCorreo> getMensaje(){
         return listaMensajes;
     }
-    public void mostrarMensajes(IniciarSesion inicio){
+
+    public void añadirMensajes(IniciarSesion inicio){
         mensaje = new MensajeCorreo();
         mensaje.mostrarMensaje(inicio);
         for (int i=0; i<mensaje.getMessage().length; i++){

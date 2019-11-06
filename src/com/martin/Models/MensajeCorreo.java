@@ -9,6 +9,7 @@ public class MensajeCorreo {
     private Store store;
     private Folder folder;
     private Message[] messages = null;
+    private MensajeCorreo mensaje;
 
     public void mostrarMensaje(IniciarSesion inicio){
         props = new Properties();

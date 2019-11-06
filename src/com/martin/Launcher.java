@@ -15,6 +15,7 @@ import java.io.File;
 public class Launcher extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+        Application.setUserAgentStylesheet(Application.STYLESHEET_CASPIAN);
         Parent root = FXMLLoader.load(getClass().getResource("views/MainWindow.fxml"));
         stage.setTitle("Pantalla Principal");
         stage.setScene(new Scene(root, 675, 575));

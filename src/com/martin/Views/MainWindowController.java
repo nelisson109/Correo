@@ -56,6 +56,7 @@ public class MainWindowController implements Initializable {
     @FXML
     public void AltaCuenta(ActionEvent event){
         try {
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VentanaLogin.fxml"));
             Parent root = fxmlLoader.load();
 
@@ -83,7 +84,9 @@ public class MainWindowController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        comprobarUsuario();
+        //comprobarUsuario();
+        Logica.getInstance().cargarMensajes();
+        tvCorreos.setItems(Logica.getInstance().getListaMensajes());
     }
     //tambien debo cambiar el fxml de este controlador. Esta mal planteado, arriba hay que ver
     //la lista de correos, y abajo los propios correos.

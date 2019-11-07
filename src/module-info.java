@@ -10,5 +10,5 @@ module Unidad2javaFXejemplo {
     exports com.martin.Views;
     exports com.martin.Utils;
 
-    opens com.martin.views to javafx.fxml;
+    opens com.martin.Views to javafx.fxml;
 }

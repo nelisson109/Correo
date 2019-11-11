@@ -17,10 +17,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MainWindowController implements Initializable {
+public class MainWindowController extends BaseController implements Initializable {
     private Cuenta cuenta;
     private IniciarSesion inicio;
     @FXML
@@ -52,6 +53,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private MenuItem itemReenviar;
     @FXML
+    private WebView web;
+    @FXML
     private TableView<EmailMensaje> tvCorreos;//faltan los tablecolum
     @FXML
     public void AltaCuenta(ActionEvent event){
@@ -66,7 +69,7 @@ public class MainWindowController implements Initializable {
             stage.setScene(new Scene(root, 500, 575));
             stage.showAndWait();
             comprobarUsuario();
-            //poner metodo comprobar
+
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -74,19 +77,24 @@ public class MainWindowController implements Initializable {
 
     private void comprobarUsuario(){//mirar como cuadrar esto
 
-        boolean respuesta = inicio.evaluarLogin();
+        boolean respuesta = Logica.getInstance().cargarMensajes(0);
 
         if(respuesta==true){
            // tvCuentas.setItems();//cargamos los dos tablesViews, cuentas y correos
-            Logica.getInstance().cargarMensajes();
             tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+        }
+        else{
+            inicio.evaluarLogin();
         }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaDialogo.fxml", 500, 400);
+        loginController.abrirDialogo(true);
         //comprobarUsuario();
-        Logica.getInstance().cargarMensajes();
-        tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+        Logica.getInstance().cargarCuentas(loginController.getTfCorreo(), loginController.getPfContraseña());
+        comprobarUsuario();
+
     }
     //tambien debo cambiar el fxml de este controlador. Esta mal planteado, arriba hay que ver
     //la lista de correos, y abajo los propios correos.

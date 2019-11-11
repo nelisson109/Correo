@@ -39,26 +39,6 @@
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <TableView fx:id="tvCuentas" prefHeight="290.0" prefWidth="408.0">
-                                 <columns>
-                                    <TableColumn fx:id="tcCuenta" prefWidth="140.0" text="Cuenta" />
-                                    <TableColumn fx:id="tcTitular" prefWidth="111.0" text="Titular" />
-                                 </columns>
-                              </TableView>
-                              <MenuBar fx:id="menuCuenta" layoutX="408.0" layoutY="2.0">
-                                 <menus>
-                                    <Menu fx:id="menuCuentas" mnemonicParsing="false" text="Acción">
-                                       <items>
-                                          <MenuItem fx:id="itemAlta" mnemonicParsing="false" onAction="#AltaCuenta" text="Alta Cuenta" />
-                                          <MenuItem fx:id="itemBorrarCuenta" mnemonicParsing="false" text="Borrar Cuenta" />
-                                       </items>
-                                    </Menu>
-                                 </menus>
-                              </MenuBar>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
                               <Button fx:id="btnNuevo" layoutX="417.0" layoutY="107.0" mnemonicParsing="false" text="Nuevo" />
                               <Button fx:id="btnBorrar" layoutX="418.0" layoutY="132.0" mnemonicParsing="false" text="Borrar" />
                               <MenuBar layoutX="409.0" layoutY="2.0">
@@ -95,6 +75,26 @@
                                     </AnchorPane>
                                  </content>
                               </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView fx:id="tvCuentas" prefHeight="290.0" prefWidth="408.0">
+                                 <columns>
+                                    <TableColumn fx:id="tcCuenta" prefWidth="140.0" text="Cuenta" />
+                                    <TableColumn fx:id="tcTitular" prefWidth="111.0" text="Titular" />
+                                 </columns>
+                              </TableView>
+                              <MenuBar fx:id="menuCuenta" layoutX="408.0" layoutY="2.0">
+                                 <menus>
+                                    <Menu fx:id="menuCuentas" mnemonicParsing="false" text="Acción">
+                                       <items>
+                                          <MenuItem fx:id="itemAlta" mnemonicParsing="false" onAction="#AltaCuenta" text="Alta Cuenta" />
+                                          <MenuItem fx:id="itemBorrarCuenta" mnemonicParsing="false" text="Borrar Cuenta" />
+                                       </items>
+                                    </Menu>
+                                 </menus>
+                              </MenuBar>
                            </children>
                         </AnchorPane>
                      </items>

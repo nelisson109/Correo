@@ -1,10 +1,7 @@
 package com.martin.Logica;
 
 
-import com.martin.Models.Cuenta;
-import com.martin.Models.EmailMensaje;
-import com.martin.Models.IniciarSesion;
-import com.martin.Models.MensajeCorreo;
+import com.martin.Models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.PasswordField;
@@ -69,6 +66,9 @@ public class Logica {
         }
 
     }
+    /*
+    * aqui hay que crear un metodo que devuelva el mensaje del correo con todos sus elementos
+    * Habra que parsearlo con MineMessageParser*/
 
 
 /*--------------------------------------------

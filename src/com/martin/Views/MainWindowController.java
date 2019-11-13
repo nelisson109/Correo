@@ -89,7 +89,7 @@ public class MainWindowController extends BaseController implements Initializabl
 
         }
         else{
-            inicio.evaluarLogin();
+            //inicio.evaluarLogin();
         }
     }
     @Override
@@ -100,6 +100,7 @@ public class MainWindowController extends BaseController implements Initializabl
         tvCorreos.setItems(Logica.getInstance().getListaMensajes());
         tvCorreos.getSelectionModel().select(0);//indice
         webEngine = webVista.getEngine();
+
         webEngine.loadContent((String) tvCorreos.getSelectionModel().getSelectedItem().getContent());
         //Logica.getInstance().cargarCuentas(loginController.getTfCorreo(), loginController.getPfContraseña());
 

@@ -32,11 +32,12 @@ public class Logica {
     public ObservableList<EmailMensaje> getListaMensajes(){
         return listaMensajes;
     }
+    public ObservableList getListaCuentas(){
+        return listaCuentas;
+    }
 
     public void cargarCuentas(IniciarSesion inicioCuenta){
-        TextField tfCorreo;
-        PasswordField pfContraseña;
-        inicioCuenta = new IniciarSesion(tfCorreo, pfContraseña);
+
         listaCuentas.add(inicioCuenta);
     }
     public boolean cargarMensajes(int indice){

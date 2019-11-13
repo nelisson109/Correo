@@ -14,13 +14,12 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class Logica {
-    private ObservableList<EmailMensaje> listaMensajes = FXCollections.observableArrayList();//esta mal, no se le puede pasar Message, hay que pasarle EmailMensaje
+    private ObservableList<EmailMensaje> listaMensajes = FXCollections.observableArrayList();
     private ObservableList<IniciarSesion> listaCuentas = FXCollections.observableArrayList();
 
     private static Logica INSTANCE = null;
 
     private Logica() {
-
     }
 
     public static Logica getInstance() {
@@ -32,12 +31,11 @@ public class Logica {
     public ObservableList<EmailMensaje> getListaMensajes(){
         return listaMensajes;
     }
-    public ObservableList getListaCuentas(){
+    public ObservableList<IniciarSesion> getListaCuentas(){
         return listaCuentas;
     }
 
     public void cargarCuentas(IniciarSesion inicioCuenta){
-
         listaCuentas.add(inicioCuenta);
     }
     public boolean cargarMensajes(int indice){
@@ -49,8 +47,8 @@ public class Logica {
         Store store;
         Folder folder = null;
         Message [] vectorMensajes;
-        String usuario = String.valueOf(listaCuentas.get(indice).getTfCorreo());
-        String contraseña = String.valueOf(listaCuentas.get(indice).getPfContraseña());
+        String usuario = listaCuentas.get(indice).getUsuario();
+        String contraseña = listaCuentas.get(indice).getContraseña();
 
         try{
             store = sesion.getStore("imaps");
@@ -69,6 +67,19 @@ public class Logica {
             return respuesta;
         }
 
+    }
+    private Store store;
+    public EmailTreeItem cargarCarpetas() throws MessagingException{
+        EmailTreeItem nodoRoot = new EmailTreeItem(IniciarSesion, "direccion email");
+        Folder [] vectorCarpetas = store.getDefaultFolder().list(/*"*"*/);
+        nodoRoot.setExpanded(true);
+        for(Folder folder : vectorCarpetas){
+            if(folder.getType()!=0 && Folder.HOLDS_MESSAGES!=0){
+                EmailTreeItem item = new EmailTreeItem(IniciarSesion, folder.getName().toString());
+                nodoRoot.getChildren().add(item);
+            }
+        }
+        return nodoRoot;
     }
     /*
     * aqui hay que crear un metodo que devuelva el mensaje del correo con todos sus elementos

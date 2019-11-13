@@ -3,7 +3,7 @@ package com.martin.Models;
 import javax.mail.*;
 import java.util.Properties;
 
-public class MensajeCorreo {
+public class MensajeCorreo {//esta clase sobra en principio
     private Properties props;
     private Session session;
     private Store store;

@@ -7,15 +7,17 @@ import javafx.scene.control.TextField;
 public class IniciarSesion {
     private TextField tfCorreo;
     private PasswordField pfContraseña;
+    private String usuario;
+    private String contraseña;
 
-    public IniciarSesion(TextField tfCorreo, PasswordField pfContraseña) {
-        this.tfCorreo = tfCorreo;
-        this.pfContraseña = pfContraseña;
+    public IniciarSesion(String usuario, String contraseña) {
+        this.usuario = usuario;
+        this.contraseña = contraseña;
     }
     public boolean evaluarLogin(boolean respuesta){
 
-        if(tfCorreo.getText().equalsIgnoreCase("gavadianmartin@gmail.com") &&
-                pfContraseña.getText().equals("helipi67")){
+        if(usuario.equalsIgnoreCase("martinlg36dam@gmail.com") &&
+                contraseña.equals("helipi67")){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Login correcto");
             alert.setContentText("El usuario y la contraseña introducidos han sido correctos");
@@ -31,6 +33,14 @@ public class IniciarSesion {
             pfContraseña.setText("");
             return false;
         }
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
     }
 
     public TextField getTfCorreo() {

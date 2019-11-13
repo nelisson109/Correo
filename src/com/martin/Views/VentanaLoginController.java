@@ -45,12 +45,18 @@ public class VentanaLoginController extends BaseController implements Initializa
     public PasswordField getPfContraseña(){//cambiar metodo a string
         return pfContraseña;
     }
+    public String getUsuario(){
+        return usuario;
+    }
+    public String getContraseña(){
+        return contraseña;
+    }
 
     @FXML
     public void entrar(ActionEvent event){//enlazar en scenebuilder con el botonLogin
-       // usuario = tfCorreo.getText();
-       // contraseña = pfContraseña.getText();
-        IniciarSesion inicioCuenta = new IniciarSesion(tfCorreo, pfContraseña);
+        usuario = tfCorreo.getText();
+        contraseña = pfContraseña.getText();
+        IniciarSesion inicioCuenta = new IniciarSesion(usuario, contraseña);
         Logica.getInstance().cargarCuentas(inicioCuenta);
         respuesta = Logica.getInstance().cargarMensajes(0);//indice
         inicioCuenta.evaluarLogin(respuesta);

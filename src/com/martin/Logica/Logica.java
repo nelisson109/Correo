@@ -72,7 +72,16 @@ public class Logica {
     }
     /*
     * aqui hay que crear un metodo que devuelva el mensaje del correo con todos sus elementos
-    * Habra que parsearlo con MineMessageParser*/
+    * Habra que parsearlo con MineMessageParser
+    * habra que crear un metodo que sea public EmailTreeItem cargarCarpetas(IniciarSesion inicio)
+    * habra que poner que el EmailTreeItem extienda de TreeItem<String>
+    * en el constructor del EmailTreeItem le pasaremos un super(con el objeto de carpeta)
+    * 0.Yo al final devuelvo el EmailTreeItem raiz
+    *1.conectar store
+    * 2.obtener carpetas primer nivel(for)
+    * 3.crear treeItem por cada carpeta(if)
+    * 4.Añadir los hijos a la raiz
+    * 5.Solo nos quedaría la recursividad(llamar dentro del metodo al propio metodo)*/
 
 
 /*--------------------------------------------

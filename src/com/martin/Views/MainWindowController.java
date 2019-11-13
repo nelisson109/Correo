@@ -94,7 +94,7 @@ public class MainWindowController extends BaseController implements Initializabl
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaDialogo.fxml", 500, 400);
+        VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
         loginController.getStage().setResizable(false);//mirar
         loginController.abrirDialogo(true);
         tvCorreos.setItems(Logica.getInstance().getListaMensajes());

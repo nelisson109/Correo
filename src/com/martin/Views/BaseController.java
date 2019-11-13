@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class BaseController {
+public class BaseController {//implements
     private Stage stage;
     protected Stage getStage(){
         return stage;

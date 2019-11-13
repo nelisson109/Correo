@@ -17,9 +17,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.w3c.dom.events.MouseEvent;
 
 public class MainWindowController extends BaseController implements Initializable {
     private Cuenta cuenta;
@@ -53,7 +55,9 @@ public class MainWindowController extends BaseController implements Initializabl
     @FXML
     private MenuItem itemReenviar;
     @FXML
-    private WebView web;
+    private WebView webVista;
+    @FXML
+    private WebEngine webEngine;
     @FXML
     private TableView<EmailMensaje> tvCorreos;//faltan los tablecolum
     @FXML
@@ -82,6 +86,7 @@ public class MainWindowController extends BaseController implements Initializabl
         if(respuesta==true){
            // tvCuentas.setItems();//cargamos los dos tablesViews, cuentas y correos
             tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+
         }
         else{
             inicio.evaluarLogin();
@@ -90,12 +95,20 @@ public class MainWindowController extends BaseController implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaDialogo.fxml", 500, 400);
+        loginController.getStage().setResizable(false);//mirar
         loginController.abrirDialogo(true);
-        //comprobarUsuario();
-        Logica.getInstance().cargarCuentas(loginController.getTfCorreo(), loginController.getPfContraseña());
-        comprobarUsuario();
+        tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+        tvCorreos.getSelectionModel().select(0);//indice
+        webEngine = webVista.getEngine();
+        webEngine.loadContent((String) tvCorreos.getSelectionModel().getSelectedItem().getContent());
+        //Logica.getInstance().cargarCuentas(loginController.getTfCorreo(), loginController.getPfContraseña());
+
 
     }
-    //tambien debo cambiar el fxml de este controlador. Esta mal planteado, arriba hay que ver
-    //la lista de correos, y abajo los propios correos.
+    @FXML
+    public void elegirCorreo(ActionEvent event){
+        webEngine = webVista.getEngine();
+        webEngine.loadContent((String) tvCorreos.getSelectionModel().getSelectedItem().getContent());
+
+    }
 }

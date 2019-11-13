@@ -12,7 +12,8 @@ public class IniciarSesion {
         this.tfCorreo = tfCorreo;
         this.pfContraseña = pfContraseña;
     }
-    public boolean evaluarLogin(){
+    public boolean evaluarLogin(boolean respuesta){
+
         if(tfCorreo.getText().equalsIgnoreCase("gavadianmartin@gmail.com") &&
                 pfContraseña.getText().equals("helipi67")){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

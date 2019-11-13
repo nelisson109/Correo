@@ -33,8 +33,11 @@ public class Logica {
         return listaMensajes;
     }
 
-    public void cargarCuentas(TextField usuario, PasswordField contraseña){
-        listaCuentas.add(new IniciarSesion(usuario, contraseña));
+    public void cargarCuentas(IniciarSesion inicioCuenta){
+        TextField tfCorreo;
+        PasswordField pfContraseña;
+        inicioCuenta = new IniciarSesion(tfCorreo, pfContraseña);
+        listaCuentas.add(inicioCuenta);
     }
     public boolean cargarMensajes(int indice){
         boolean respuesta = true;

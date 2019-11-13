@@ -1,5 +1,6 @@
 package com.martin.Views;
 
+import com.martin.Logica.Logica;
 import com.martin.Models.IniciarSesion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -35,21 +36,33 @@ public class VentanaLoginController extends BaseController implements Initializa
     @FXML
     private Button btnCrearCuenta;
 
-    public TextField getTfCorreo(){
+    private String usuario, contraseña;
+    private boolean respuesta;
+
+    public TextField getTfCorreo(){//cambiar metodo a string
         return tfCorreo;
     }
-    public PasswordField getPfContraseña(){
+    public PasswordField getPfContraseña(){//cambiar metodo a string
         return pfContraseña;
     }
 
     @FXML
     public void entrar(ActionEvent event){//enlazar en scenebuilder con el botonLogin
+       // usuario = tfCorreo.getText();
+       // contraseña = pfContraseña.getText();
+        IniciarSesion inicioCuenta = new IniciarSesion(tfCorreo, pfContraseña);
+        Logica.getInstance().cargarCuentas(inicioCuenta);
+        respuesta = Logica.getInstance().cargarMensajes(0);//indice
+        inicioCuenta.evaluarLogin(respuesta);
+
 
         getStage().close();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tfCorreo.setText("martinlg36dam@gmail.com");
+        pfContraseña.setText("helipi67");
         ValidationSupport validationSupport = new ValidationSupport();
         validationSupport.registerValidator(tfCorreo, Validator.createEmptyValidator("Este campo no puede estar vacío"));
         validationSupport.registerValidator(pfContraseña, Validator.createEmptyValidator("Este campo no puede estar vacío"));

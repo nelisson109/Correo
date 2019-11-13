@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6311ca9-f39e-4d06-9254-c01434b3d71a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Models/EmailTreeItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Models/IniciarSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Models/IniciarSesion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaLoginController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,16 +132,5 @@
     <MESSAGE value="builder principal" />
     <MESSAGE value="muriendo con log" />
     <option name="LAST_COMMIT_MESSAGE" value="muriendo con log" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="103.0" fitWidth="263.0" layoutX="149.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../gmal.jpg" />
+            <Image url="@Res/gmal.jpg" />
          </image>
       </ImageView>
       <Label layoutX="59.0" layoutY="152.0" text="Usuario:">

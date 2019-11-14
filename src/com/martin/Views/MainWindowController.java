@@ -2,6 +2,7 @@ package com.martin.Views;
 
 import com.martin.Logica.Logica;
 import com.martin.Models.EmailMensaje;
+import com.martin.Models.EmailTreeItem;
 import com.martin.Models.IniciarSesion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,9 @@ import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.mail.Folder;
+import javax.mail.MessagingException;
+
 public class MainWindowController extends BaseController implements Initializable {
 
     private IniciarSesion inicio;
@@ -32,6 +36,8 @@ public class MainWindowController extends BaseController implements Initializabl
     private Button btnReenviar;
     @FXML
     private Menu barAcciones;
+    @FXML
+    TreeView treeView;
     @FXML
     private MenuItem itemNuevo;//seria btnEscribir
     @FXML
@@ -82,11 +88,18 @@ public class MainWindowController extends BaseController implements Initializabl
         loginController.getStage().setResizable(false);//mirar
         loginController.abrirDialogo(true);
         tvCorreos.setItems(Logica.getInstance().getListaMensajes());
-        tvCorreos.getSelectionModel().select(0);//indice
-        webEngine = webVista.getEngine();
+       // tvCorreos.getSelectionModel().select(0);//nos muestra el primero de la lista
+        try {
+            EmailTreeItem item = Logica.getInstance().cargarCarpetas();
+            treeView.setShowRoot(false);
+           //treeView.setRoot(item);
+            treeView.setRoot(item);
+            //treeView.getSelectionModel().select(item);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+       // EmailMensaje mensaje = tvCorreos.getSelectionModel().getSelectedItem();
 
-        webEngine.loadContent((String) tvCorreos.getSelectionModel().getSelectedItem().getContent());
-        //Logica.getInstance().cargarCuentas(loginController.getTfCorreo(), loginController.getPfContraseña());
 
 
     }

@@ -16,6 +16,7 @@ import java.util.Properties;
 public class Logica {
     private ObservableList<EmailMensaje> listaMensajes = FXCollections.observableArrayList();
     private ObservableList<IniciarSesion> listaCuentas = FXCollections.observableArrayList();
+    private EmailTreeItem nodoRoot;
 
     private static Logica INSTANCE = null;
 
@@ -70,7 +71,8 @@ public class Logica {
     }
     private Store store;
     public EmailTreeItem cargarCarpetas() throws MessagingException{
-        EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(0), listaCuentas.get(0).getUsuario());
+        nodoRoot = new EmailTreeItem(listaCuentas.get(0), listaCuentas.get(0).getUsuario());
+
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
@@ -81,8 +83,10 @@ public class Logica {
         for(Folder folder : vectorCarpetas){
             if(folder.getType()!=0 && Folder.HOLDS_MESSAGES!=0){
                 EmailTreeItem item = new EmailTreeItem(listaCuentas.get(0), folder.getName());
-                nodoRoot.getChildren().add(item);
+                nodoRoot.getChildren().add(item);//esto seria en el for
             }
+            /*if(folder.getType()==Folder.HOLDS:FOLDERS)
+            * getFolders(folder.list(), item, emailAccount);*/
         }
         return nodoRoot;
     }

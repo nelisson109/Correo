@@ -3,10 +3,12 @@ package com.martin.Models;
 import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 
 public class EmailMensaje {
     private Message message;
+    private MimeMessage parser;
 
     public EmailMensaje(Message message) {
         this.message = message;
@@ -44,4 +46,15 @@ public class EmailMensaje {
         String cadena = String.valueOf(direccion[0]);
         return cadena;
     }
+/*    try{
+        String content = parser.getHtmlContent();
+        if(content==null){
+            return parse.getPlainContent();
+        }else{
+            return content;
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+        return "";
+    }*/
 }

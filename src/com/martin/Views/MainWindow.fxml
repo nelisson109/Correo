@@ -9,11 +9,13 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane prefHeight="587.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.martin.Views.MainWindowController">
    <children>
@@ -39,8 +41,6 @@
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Button fx:id="btnNuevo" layoutX="417.0" layoutY="107.0" mnemonicParsing="false" text="Nuevo" />
-                              <Button fx:id="btnBorrar" layoutX="418.0" layoutY="132.0" mnemonicParsing="false" text="Borrar" />
                               <MenuBar layoutX="409.0" layoutY="2.0">
                                  <menus>
                                     <Menu fx:id="barAcciones" mnemonicParsing="false" text="Acción">
@@ -79,22 +79,15 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <TableView fx:id="tvCuentas" prefHeight="290.0" prefWidth="408.0">
-                                 <columns>
-                                    <TableColumn fx:id="tcCuenta" prefWidth="140.0" text="Cuenta" />
-                                    <TableColumn fx:id="tcTitular" prefWidth="111.0" text="Titular" />
-                                 </columns>
-                              </TableView>
-                              <MenuBar fx:id="menuCuenta" layoutX="408.0" layoutY="2.0">
-                                 <menus>
-                                    <Menu fx:id="menuCuentas" mnemonicParsing="false" text="Acción">
-                                       <items>
-                                          <MenuItem fx:id="itemAlta" mnemonicParsing="false" onAction="#AltaCuenta" text="Alta Cuenta" />
-                                          <MenuItem fx:id="itemBorrarCuenta" mnemonicParsing="false" text="Borrar Cuenta" />
-                                       </items>
-                                    </Menu>
-                                 </menus>
-                              </MenuBar>
+                              <WebView fx:id="webVista" layoutY="2.0" onDragDetected="#elegirCorreo" prefHeight="289.0" prefWidth="396.0" />
+                              <ToolBar layoutX="396.0" layoutY="1.0" orientation="VERTICAL" prefHeight="289.0" prefWidth="89.0">
+                                <items>
+                                    <Button fx:id="btnEscribir" mnemonicParsing="false" text="Escribir" />
+                                    <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" />
+                                    <Button fx:id="btnResponder" mnemonicParsing="false" text="Responder" />
+                                  <Button fx:id="btnReenviar" mnemonicParsing="false" text="Reenviar" />
+                                </items>
+                              </ToolBar>
                            </children>
                         </AnchorPane>
                      </items>

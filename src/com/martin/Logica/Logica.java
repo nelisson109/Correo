@@ -70,12 +70,17 @@ public class Logica {
     }
     private Store store;
     public EmailTreeItem cargarCarpetas() throws MessagingException{
-        EmailTreeItem nodoRoot = new EmailTreeItem(IniciarSesion, "direccion email");
+        EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(0), listaCuentas.get(0).getUsuario());
+        Properties props = new Properties();
+        props.setProperty("mail.store.protocol", "imaps");
+        Session sesion = Session.getInstance(props);
+        Store store = sesion.getStore("imaps");
+        store.connect("imap.googlemail.com", listaCuentas.get(0).getUsuario(), listaCuentas.get(0).getContraseña());
         Folder [] vectorCarpetas = store.getDefaultFolder().list(/*"*"*/);
         nodoRoot.setExpanded(true);
         for(Folder folder : vectorCarpetas){
             if(folder.getType()!=0 && Folder.HOLDS_MESSAGES!=0){
-                EmailTreeItem item = new EmailTreeItem(IniciarSesion, folder.getName().toString());
+                EmailTreeItem item = new EmailTreeItem(listaCuentas.get(0), folder.getName());
                 nodoRoot.getChildren().add(item);
             }
         }

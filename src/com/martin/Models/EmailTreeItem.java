@@ -9,11 +9,10 @@ public class EmailTreeItem extends TreeItem<String> {
     private String nombre;
     private Folder carpeta;
 
-    public EmailTreeItem(IniciarSesion iniciarSesion, String nombre, Folder carpeta) {
+    public EmailTreeItem(IniciarSesion iniciarSesion, String nombre) {
         super(nombre);
         this.iniciarSesion = iniciarSesion;
         this.nombre = nombre;
-        this.carpeta = carpeta;
     }
 
     public String getNombre() {

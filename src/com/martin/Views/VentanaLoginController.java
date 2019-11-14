@@ -34,7 +34,7 @@ public class VentanaLoginController extends BaseController implements Initializa
     private Button btnLogin;
 
     @FXML
-    private Button btnCrearCuenta;
+    private Button btnCrearCuenta;//dejar de momento, aqui seria un enlace para llevar al usuario a un formulario de alta en gmail
 
     private String usuario, contraseña;
     private boolean respuesta;

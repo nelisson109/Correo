@@ -23,21 +23,17 @@ public class MainWindowController extends BaseController implements Initializabl
 
     private IniciarSesion inicio;
     @FXML
-    private MenuBar menuCuenta;
-    @FXML
-    private Menu menuCuentas;
-    @FXML
-    private MenuItem itemAlta;
-    @FXML
-    private MenuItem itemBorrarCuenta;
-    @FXML
-    private Button btnNuevo;
+    private Button btnEscribir;
     @FXML
     private Button btnBorrar;
     @FXML
+    private Button btnResponder;
+    @FXML
+    private Button btnReenviar;
+    @FXML
     private Menu barAcciones;
     @FXML
-    private MenuItem itemNuevo;
+    private MenuItem itemNuevo;//seria btnEscribir
     @FXML
     private MenuItem itemBorrar;
     @FXML
@@ -46,12 +42,11 @@ public class MainWindowController extends BaseController implements Initializabl
     private MenuItem itemReenviar;
     @FXML
     private WebView webVista;
-    @FXML
     private WebEngine webEngine;
     @FXML
-    private TableView<EmailMensaje> tvCorreos;//faltan los tablecolum
+    private TableView<EmailMensaje> tvCorreos;
     @FXML
-    public void AltaCuenta(ActionEvent event){
+ /*   public void AltaCuenta(ActionEvent event){
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VentanaLogin.fxml"));
@@ -76,12 +71,11 @@ public class MainWindowController extends BaseController implements Initializabl
         if(respuesta==true){
            // tvCuentas.setItems();//cargamos los dos tablesViews, cuentas y correos
             tvCorreos.setItems(Logica.getInstance().getListaMensajes());
-
         }
         else{
             //inicio.evaluarLogin();
         }
-    }
+    }*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);

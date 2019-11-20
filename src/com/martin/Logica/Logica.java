@@ -39,17 +39,19 @@ public class Logica {
     public void cargarCuentas(IniciarSesion inicioCuenta){
         listaCuentas.add(inicioCuenta);
     }
+
     private int indice;
     private Store store;
     private Folder carpeta;
-    public void cargarMensajes(Folder folder){
-        boolean respuesta = true;
+
+    public void cargarMensajes(){
+
         listaMensajes.clear();
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
         Store store;
-        folder = null;
+        Folder folder = null;
         Message [] vectorMensajes;
         String usuario = listaCuentas.get(indice).getUsuario();
         String contraseña = listaCuentas.get(indice).getContraseña();
@@ -68,8 +70,8 @@ public class Logica {
         }catch (MessagingException e){
             e.printStackTrace();
         }
-
     }
+
     public boolean conexion(){
         boolean respuesta;
         listaMensajes.clear();
@@ -92,24 +94,32 @@ public class Logica {
 
     public EmailTreeItem cargarCarpetas() throws MessagingException{
         nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
-
+        IniciarSesion is = null;
+        String nombre = null;
+        Folder carpeta = null;
+        EmailTreeItem nodoVacio = new EmailTreeItem(is, nombre, carpeta);//nodo que tomara el nodo raiz como hijo
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
         Store store = sesion.getStore("imaps");
         store.connect("imap.googlemail.com", listaCuentas.get(indice).getUsuario(), listaCuentas.get(indice).getContraseña());
         Folder [] vectorCarpetas = store.getDefaultFolder().list();
-        nodoRoot.setExpanded(true);
+        //nodoRoot.setExpanded(true);lo comento porq hay qe cambiar el nodo
+
+        nodoVacio.getChildren().add(nodoRoot);
+        llenarCarpetas(vectorCarpetas, nodoVacio, listaCuentas.get(indice));
     /*    for(Folder folder : vectorCarpetas){
             if(folder.getType()!=0 && Folder.HOLDS_MESSAGES!=0){
                 EmailTreeItem item = new EmailTreeItem(listaCuentas.get(0), folder.getName());
                 nodoRoot.getChildren().add(item);//esto seria en el for
             }
+            habra que meter un for para que vaya pillando las distintas cuentas
         }*/
-        return nodoRoot;
+        return nodoVacio;
     }
     public void llenarCarpetas(Folder [] vectorCarpetas, EmailTreeItem nodoRoot, IniciarSesion inicio) throws MessagingException{
         for (Folder folder : vectorCarpetas){
+            //EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
             EmailTreeItem item = new EmailTreeItem(listaCuentas.get(indice), folder.getName(), carpeta);
             nodoRoot.getChildren().add(item);
             if(folder.getType()==Folder.HOLDS_FOLDERS){

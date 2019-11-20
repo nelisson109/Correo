@@ -79,7 +79,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <WebView fx:id="webVista" layoutY="2.0" onDragDetected="#elegirCorreo" prefHeight="289.0" prefWidth="396.0" />
+                              <WebView fx:id="webVista" layoutY="2.0" prefHeight="289.0" prefWidth="396.0" />
                               <ToolBar layoutX="396.0" layoutY="1.0" orientation="VERTICAL" prefHeight="289.0" prefWidth="89.0">
                                 <items>
                                     <Button fx:id="btnEscribir" mnemonicParsing="false" text="Escribir" />

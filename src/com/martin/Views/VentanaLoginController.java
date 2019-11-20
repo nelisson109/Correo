@@ -53,7 +53,7 @@ public class VentanaLoginController extends BaseController implements Initializa
     }
 
     @FXML
-    public void entrar(ActionEvent event){//enlazar en scenebuilder con el botonLogin
+    public void entrar(ActionEvent event){
         usuario = tfCorreo.getText();
         contraseña = pfContraseña.getText();
         IniciarSesion inicioCuenta = new IniciarSesion(usuario, contraseña);

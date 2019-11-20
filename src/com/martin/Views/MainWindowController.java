@@ -53,51 +53,28 @@ public class MainWindowController extends BaseController implements Initializabl
     private WebEngine webEngine;
     @FXML
     private TableView<EmailMensaje> tvCorreos;
-    @FXML
- /*   public void AltaCuenta(ActionEvent event){
-        try {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VentanaLogin.fxml"));
-            Parent root = fxmlLoader.load();
-
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Inicio Sesión");
-            stage.setScene(new Scene(root, 500, 575));
-            stage.showAndWait();
-            comprobarUsuario();
-
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    private void comprobarUsuario(){//mirar como cuadrar esto
-
-        boolean respuesta = Logica.getInstance().cargarMensajes(0);
-
-        if(respuesta==true){
-           // tvCuentas.setItems();//cargamos los dos tablesViews, cuentas y correos
-            tvCorreos.setItems(Logica.getInstance().getListaMensajes());
-        }
-        else{
-            //inicio.evaluarLogin();
-        }
-    }*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
         loginController.abrirDialogo(true);
+       // Folder carpeta;
+        Logica.getInstance().cargarMensajes();
         tvCorreos.setItems(Logica.getInstance().getListaMensajes());
        // tvCorreos.getSelectionModel().select(0);//nos muestra el primero de la lista para empezar. probando
         try {
             EmailTreeItem item = Logica.getInstance().cargarCarpetas();
+
+            Logica.getInstance().cargarCuentas(inicio);
+
+           // Logica.getInstance().llenarCarpetas(vectorCarpetas, item, inicio);
             treeView.setShowRoot(false);
             treeView.setRoot(item);
             treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {//nos suscribimos a cambios
                 @Override
                 public void changed(ObservableValue observableValue, Object oldValue, Object nexValue) {
-                    Logica.getInstance().cargarMensajes((Folder) treeView.getSelectionModel().getSelectedItem());
+                   // Logica.getInstance().cargarMensajes((Folder) treeView.getSelectionModel().getSelectedItem());
+                    Logica.getInstance().cargarMensajes();
                     tvCorreos.setItems(Logica.getInstance().getListaMensajes());
                 }
             });

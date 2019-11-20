@@ -4,6 +4,8 @@ import com.martin.Logica.Logica;
 import com.martin.Models.EmailMensaje;
 import com.martin.Models.EmailTreeItem;
 import com.martin.Models.IniciarSesion;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -85,28 +87,23 @@ public class MainWindowController extends BaseController implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
-        loginController.getStage().setResizable(false);//mirar
         loginController.abrirDialogo(true);
         tvCorreos.setItems(Logica.getInstance().getListaMensajes());
-       // tvCorreos.getSelectionModel().select(0);//nos muestra el primero de la lista
+       // tvCorreos.getSelectionModel().select(0);//nos muestra el primero de la lista para empezar. probando
         try {
             EmailTreeItem item = Logica.getInstance().cargarCarpetas();
             treeView.setShowRoot(false);
-           //treeView.setRoot(item);
             treeView.setRoot(item);
-            //treeView.getSelectionModel().select(item);
+            treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {//nos suscribimos a cambios
+                @Override
+                public void changed(ObservableValue observableValue, Object oldValue, Object nexValue) {
+                    Logica.getInstance().cargarMensajes((Folder) treeView.getSelectionModel().getSelectedItem());
+                    tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+                }
+            });
         } catch (MessagingException e) {
             e.printStackTrace();
         }
        // EmailMensaje mensaje = tvCorreos.getSelectionModel().getSelectedItem();
-
-
-
-    }
-    @FXML
-    public void elegirCorreo(ActionEvent event){
-        webEngine = webVista.getEngine();
-        webEngine.loadContent((String) tvCorreos.getSelectionModel().getSelectedItem().getContent());
-
     }
 }

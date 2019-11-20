@@ -58,7 +58,7 @@ public class VentanaLoginController extends BaseController implements Initializa
         contraseña = pfContraseña.getText();
         IniciarSesion inicioCuenta = new IniciarSesion(usuario, contraseña);
         Logica.getInstance().cargarCuentas(inicioCuenta);
-        respuesta = Logica.getInstance().cargarMensajes(0);//indice
+        respuesta = Logica.getInstance().conexion();
         inicioCuenta.evaluarLogin(respuesta);
 
 

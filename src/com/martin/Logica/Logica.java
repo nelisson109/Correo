@@ -39,14 +39,17 @@ public class Logica {
     public void cargarCuentas(IniciarSesion inicioCuenta){
         listaCuentas.add(inicioCuenta);
     }
-    public boolean cargarMensajes(int indice){
+    private int indice;
+    private Store store;
+    private Folder carpeta;
+    public void cargarMensajes(Folder folder){
         boolean respuesta = true;
         listaMensajes.clear();
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
         Store store;
-        Folder folder = null;
+        folder = null;
         Message [] vectorMensajes;
         String usuario = listaCuentas.get(indice).getUsuario();
         String contraseña = listaCuentas.get(indice).getContraseña();
@@ -61,34 +64,59 @@ public class Logica {
                 EmailMensaje mensaje = new EmailMensaje(vectorMensajes[i]);
                 listaMensajes.add(mensaje);
             }
-            return respuesta;
+
         }catch (MessagingException e){
+            e.printStackTrace();
+        }
+
+    }
+    public boolean conexion(){
+        boolean respuesta;
+        listaMensajes.clear();
+        Properties props = new Properties();
+        props.setProperty("mail.store.protocol", "imaps");
+        Session sesion = Session.getInstance(props);
+        String usuario = listaCuentas.get(indice).getUsuario();
+        String contraseña = listaCuentas.get(indice).getContraseña();
+        try {
+            store = sesion.getStore("imaps");
+            store.connect("imap.googlemail.com", usuario, contraseña);
+            respuesta = true;
+            return respuesta;
+        }catch(MessagingException e){
             e.printStackTrace();
             respuesta = false;
             return respuesta;
         }
-
     }
-    private Store store;
+
     public EmailTreeItem cargarCarpetas() throws MessagingException{
-        nodoRoot = new EmailTreeItem(listaCuentas.get(0), listaCuentas.get(0).getUsuario());
+        nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
 
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
         Store store = sesion.getStore("imaps");
-        store.connect("imap.googlemail.com", listaCuentas.get(0).getUsuario(), listaCuentas.get(0).getContraseña());
-        Folder [] vectorCarpetas = store.getDefaultFolder().list(/*"*"*/);
+        store.connect("imap.googlemail.com", listaCuentas.get(indice).getUsuario(), listaCuentas.get(indice).getContraseña());
+        Folder [] vectorCarpetas = store.getDefaultFolder().list();
         nodoRoot.setExpanded(true);
-        for(Folder folder : vectorCarpetas){
+    /*    for(Folder folder : vectorCarpetas){
             if(folder.getType()!=0 && Folder.HOLDS_MESSAGES!=0){
                 EmailTreeItem item = new EmailTreeItem(listaCuentas.get(0), folder.getName());
                 nodoRoot.getChildren().add(item);//esto seria en el for
             }
-            /*if(folder.getType()==Folder.HOLDS:FOLDERS)
-            * getFolders(folder.list(), item, emailAccount);*/
-        }
+        }*/
         return nodoRoot;
+    }
+    public void llenarCarpetas(Folder [] vectorCarpetas, EmailTreeItem nodoRoot, IniciarSesion inicio) throws MessagingException{
+        for (Folder folder : vectorCarpetas){
+            EmailTreeItem item = new EmailTreeItem(listaCuentas.get(indice), folder.getName(), carpeta);
+            nodoRoot.getChildren().add(item);
+            if(folder.getType()==Folder.HOLDS_FOLDERS){
+                llenarCarpetas(folder.list(), item, listaCuentas.get(indice));
+            }
+        }
+
     }
     /*
     * aqui hay que crear un metodo que devuelva el mensaje del correo con todos sus elementos

@@ -6,9 +6,12 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 
+import org.apache.commons.mail.util.MimeMessageParser;
+
 public class EmailMensaje {
     private Message message;
-    private MimeMessage parser;
+    private MimeMessageParser parser;
+
 
     public EmailMensaje(Message message) {
         this.message = message;
@@ -22,8 +25,47 @@ public class EmailMensaje {
         }
         return subject;
     }
+ /*   public Object getContent(){
+        Object obj = null;
+        parser = new MimeMessageParser((MimeMessage) message);
+        try {
+            parser.parse();
+            obj = parser.getMimeMessage();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return obj;
+    }*/
+    /*    try{
+             String content = parser.getHtmlContent();
+             if(content==null){
+                 return parse.getPlainContent();
+             }else{
+                 return content;
+             }
+         }catch(Exception e){
+             e.printStackTrace();
+             return "";
+         }*/
+    public String getContent(){
+        String content;
+        parser = new MimeMessageParser((MimeMessage) message);
+        try{
+            parser.parse();
+            content = parser.getHtmlContent();
+            if (content==null){
+                return parser.getPlainContent();
+            }else{
+                return content;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return "";
+        }
 
-    public Object getContent(){
+
+    }
+ /*   public Object getContent(){viejo
         Object obj = null;
         try{
             obj = message.getContent();
@@ -34,7 +76,7 @@ public class EmailMensaje {
             System.out.println("Error de entrada/salida");
         }
         return obj;
-    }
+    }*/
 
     public String getFrom(){
         Address[] direccion = null;
@@ -46,15 +88,5 @@ public class EmailMensaje {
         String cadena = String.valueOf(direccion[0]);
         return cadena;
     }
-/*    try{
-        String content = parser.getHtmlContent();
-        if(content==null){
-            return parse.getPlainContent();
-        }else{
-            return content;
-        }
-    }catch(Exception e){
-        e.printStackTrace();
-        return "";
-    }*/
+
 }

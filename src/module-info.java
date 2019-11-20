@@ -7,6 +7,7 @@ module Unidad2javaFXejemplo {
     requires org.controlsfx.controls;
 
     requires java.mail;
+    requires commons.email;
     exports com.martin;
     exports com.martin.Logica;
     exports com.martin.Models;

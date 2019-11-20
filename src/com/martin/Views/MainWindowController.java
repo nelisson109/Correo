@@ -52,6 +52,8 @@ public class MainWindowController extends BaseController implements Initializabl
     private WebView webVista;
     private WebEngine webEngine;
     @FXML
+    private TextField tfRemitente, tfAsunto;
+    @FXML
     private TableView<EmailMensaje> tvCorreos;
 
     @Override
@@ -78,9 +80,26 @@ public class MainWindowController extends BaseController implements Initializabl
                     tvCorreos.setItems(Logica.getInstance().getListaMensajes());
                 }
             });
+
+            treeView.getSelectionModel().select(1);
+
+            tvCorreos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EmailMensaje>() {
+                @Override
+                public void changed(ObservableValue<? extends EmailMensaje> observableValue, EmailMensaje oldValue, EmailMensaje newValue) {
+                    webEngine = webVista.getEngine();
+                    //preguntar a pablo si hay metodo o manera para cargar un objeto en el loadCoontent en vez de un String
+                    //Desues de hacer el cambio con MIME me pide IMAP
+                    //webEngine.loadContent(String.valueOf(newValue.getContent()));
+                    //faltan las llamadas al remitente y al asunto
+                    webEngine.loadContent(newValue.getContent());
+                    tfRemitente.setText(newValue.getFrom());
+                    tfAsunto.setText(newValue.getSubject());
+                }
+            });
+
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-       // EmailMensaje mensaje = tvCorreos.getSelectionModel().getSelectedItem();
     }
 }

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -20,11 +19,11 @@
 
 <AnchorPane prefHeight="587.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.martin.Views.MainWindowController">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" prefHeight="588.0" prefWidth="685.0">
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="588.0" prefWidth="685.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <HBox prefHeight="49.0" prefWidth="200.0">
+                  <HBox prefHeight="49.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label prefHeight="49.0" prefWidth="200.0" text="Bandeja de Correo" textAlignment="CENTER">
                            <font>
@@ -33,16 +32,16 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TreeView fx:id="treeView" layoutY="48.0" prefHeight="539.0" prefWidth="200.0" />
+                  <TreeView fx:id="treeView" layoutY="48.0" prefHeight="539.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="586.0" prefWidth="477.0">
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="586.0" prefWidth="477.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <MenuBar layoutX="409.0" layoutY="2.0">
+                              <MenuBar layoutX="409.0" layoutY="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <menus>
                                     <Menu fx:id="barAcciones" mnemonicParsing="false" text="Acción">
                                        <items>
@@ -54,43 +53,67 @@
                                     </Menu>
                                  </menus>
                               </MenuBar>
-                              <ScrollPane prefHeight="289.0" prefWidth="408.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="406.0">
-                                       <children>
-                                          <TableView fx:id="tvCorreos" prefHeight="290.0" prefWidth="406.0">
-                                             <columns>
-                                                <TableColumn id="tcCorreo" prefWidth="114.0" text="Correo">
-                                                   <cellValueFactory>
-                                                      <PropertyValueFactory property="from" />
-                                                   </cellValueFactory>
-                                                </TableColumn>
-                                                <TableColumn id="tcNombre" prefWidth="114.0" text="Nombre">
-                                                   <cellValueFactory>
-                                                      <PropertyValueFactory property="content" />
-                                                   </cellValueFactory>
-                                                </TableColumn>
-                                             </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="406.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <TableView fx:id="tvCorreos" prefHeight="290.0" prefWidth="406.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn id="tcCorreo" prefWidth="195.0" text="Remitente">
+                                             <cellValueFactory>
+                                                <PropertyValueFactory property="from" />
+                                             </cellValueFactory>
+                                          </TableColumn>
+                                          <TableColumn id="tcNombre" prefWidth="209.0" text="Asunto">
+                                             <cellValueFactory>
+                                                <PropertyValueFactory property="subject" />
+                                             </cellValueFactory>
+                                          </TableColumn>
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <WebView fx:id="webVista" layoutY="41.0" prefHeight="250.0" prefWidth="396.0" />
-                              <ToolBar layoutX="396.0" layoutY="1.0" orientation="VERTICAL" prefHeight="289.0" prefWidth="89.0">
+                              <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <items>
-                                    <Button fx:id="btnEscribir" mnemonicParsing="false" text="Escribir" />
-                                    <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" />
-                                    <Button fx:id="btnResponder" mnemonicParsing="false" text="Responder" />
-                                  <Button fx:id="btnReenviar" mnemonicParsing="false" text="Reenviar" />
+                                    <SplitPane dividerPositions="0.17482517482517482" orientation="VERTICAL" prefHeight="288.0" prefWidth="397.0">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <SplitPane dividerPositions="0.5038167938931297" prefHeight="47.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <items>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                         <children>
+                                                            <TextField fx:id="tfRemitente" layoutY="-7.0" prefHeight="43.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                         <children>
+                                                            <TextField fx:id="tfAsunto" layoutX="1.0" prefHeight="35.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                  </items>
+                                                </SplitPane>
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <WebView fx:id="webVista" prefHeight="233.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                    <ToolBar orientation="VERTICAL" prefHeight="289.0" prefWidth="89.0">
+                                      <items>
+                                          <Button fx:id="btnEscribir" mnemonicParsing="false" text="Escribir" />
+                                          <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" />
+                                          <Button fx:id="btnResponder" mnemonicParsing="false" text="Responder" />
+                                        <Button fx:id="btnReenviar" mnemonicParsing="false" text="Reenviar" />
+                                      </items>
+                                    </ToolBar>
                                 </items>
-                              </ToolBar>
-                              <TextField fx:id="tfRemitente" layoutY="-2.0" prefHeight="39.0" prefWidth="200.0" />
-                              <TextField fx:id="tfAsunto" layoutX="196.0" layoutY="-2.0" prefHeight="39.0" prefWidth="200.0" />
+                              </SplitPane>
                            </children>
                         </AnchorPane>
                      </items>

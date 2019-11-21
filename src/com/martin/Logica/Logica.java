@@ -16,7 +16,7 @@ import java.util.Properties;
 public class Logica {
     private ObservableList<EmailMensaje> listaMensajes = FXCollections.observableArrayList();
     private ObservableList<IniciarSesion> listaCuentas = FXCollections.observableArrayList();
-    private EmailTreeItem nodoRoot;
+    private EmailTreeItem nodoVacio;
 
     private static Logica INSTANCE = null;
 
@@ -40,7 +40,7 @@ public class Logica {
         listaCuentas.add(inicioCuenta);
     }
 
-    private int indice;
+    private int indice = 0;
     private Store store;
     private Folder carpeta;
 
@@ -93,11 +93,11 @@ public class Logica {
     }
 
     public EmailTreeItem cargarCarpetas() throws MessagingException{
-        nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
+        EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
         IniciarSesion is = null;
         String nombre = null;
         Folder carpeta = null;
-        EmailTreeItem nodoVacio = new EmailTreeItem(is, nombre, carpeta);//nodo que tomara el nodo raiz como hijo
+        nodoVacio = new EmailTreeItem(is, nombre, carpeta);//nodo que tomara el nodo raiz como hijo
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
@@ -107,7 +107,7 @@ public class Logica {
         //nodoRoot.setExpanded(true);lo comento porq hay qe cambiar el nodo
 
         nodoVacio.getChildren().add(nodoRoot);
-        llenarCarpetas(vectorCarpetas, nodoVacio, listaCuentas.get(indice));
+        llenarCarpetas(vectorCarpetas, nodoRoot, listaCuentas.get(indice));
     /*    for(Folder folder : vectorCarpetas){
             if(folder.getType()!=0 && Folder.HOLDS_MESSAGES!=0){
                 EmailTreeItem item = new EmailTreeItem(listaCuentas.get(0), folder.getName());

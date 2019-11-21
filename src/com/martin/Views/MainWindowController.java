@@ -59,24 +59,24 @@ public class MainWindowController extends BaseController implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
+        loginController.getStage().setTitle("Iniciar Sesión");
         loginController.abrirDialogo(true);
-       // Folder carpeta;
-        Logica.getInstance().cargarMensajes();
-        tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+
+        Logica.getInstance().cargarMensajes();//cargo la lista de mensajes
+        tvCorreos.setItems(Logica.getInstance().getListaMensajes());//muestro la lista de mensajes en el tableview
        // tvCorreos.getSelectionModel().select(0);//nos muestra el primero de la lista para empezar. probando
         try {
             EmailTreeItem item = Logica.getInstance().cargarCarpetas();
 
             Logica.getInstance().cargarCuentas(inicio);
 
-           // Logica.getInstance().llenarCarpetas(vectorCarpetas, item, inicio);
             treeView.setShowRoot(false);
             treeView.setRoot(item);
             treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {//nos suscribimos a cambios
                 @Override
-                public void changed(ObservableValue observableValue, Object oldValue, Object nexValue) {
-                   // Logica.getInstance().cargarMensajes((Folder) treeView.getSelectionModel().getSelectedItem());
-                    Logica.getInstance().cargarMensajes();
+                public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
+                   // Logica.getInstance().cargarMensajes();
+
                     tvCorreos.setItems(Logica.getInstance().getListaMensajes());
                 }
             });
@@ -87,10 +87,6 @@ public class MainWindowController extends BaseController implements Initializabl
                 @Override
                 public void changed(ObservableValue<? extends EmailMensaje> observableValue, EmailMensaje oldValue, EmailMensaje newValue) {
                     webEngine = webVista.getEngine();
-                    //preguntar a pablo si hay metodo o manera para cargar un objeto en el loadCoontent en vez de un String
-                    //Desues de hacer el cambio con MIME me pide IMAP
-                    //webEngine.loadContent(String.valueOf(newValue.getContent()));
-                    //faltan las llamadas al remitente y al asunto
                     webEngine.loadContent(newValue.getContent());
                     tfRemitente.setText(newValue.getFrom());
                     tfAsunto.setText(newValue.getSubject());

@@ -52,7 +52,7 @@ public class Logica {
         Session sesion = Session.getInstance(props);
         Store store;
         Folder folder = null;
-        Message [] vectorMensajes;
+        Message [] vectorMensajes = null;
         String usuario = listaCuentas.get(indice).getUsuario();
         String contraseña = listaCuentas.get(indice).getContraseña();
 

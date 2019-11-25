@@ -62,11 +62,12 @@ public class MainWindowController extends BaseController implements Initializabl
         loginController.getStage().setTitle("Iniciar Sesión");
         loginController.abrirDialogo(true);
 
-        Logica.getInstance().cargarMensajes();//cargo la lista de mensajes
-        tvCorreos.setItems(Logica.getInstance().getListaMensajes());//muestro la lista de mensajes en el tableview
+        Logica.getInstance().cargarMensajes();//cargo la lista de mensajes.
+        tvCorreos.setItems(Logica.getInstance().getListaMensajes());//muestro la lista de mensajes en el tableview. Hay que quitarla para q muestre lo de cada carpeta
+
        // tvCorreos.getSelectionModel().select(0);//nos muestra el primero de la lista para empezar. probando
         try {
-            EmailTreeItem item = Logica.getInstance().cargarCarpetas();
+            EmailTreeItem item = Logica.getInstance().cargarCarpetas();//hay que cambiar el metodo a llenandoCarpetas
 
             Logica.getInstance().cargarCuentas(inicio);
 
@@ -75,9 +76,8 @@ public class MainWindowController extends BaseController implements Initializabl
             treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {//nos suscribimos a cambios
                 @Override
                 public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                   // Logica.getInstance().cargarMensajes();
-
                     tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+
                 }
             });
 

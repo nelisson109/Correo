@@ -91,7 +91,30 @@ public class Logica {
             return respuesta;
         }
     }
+    public void llenandoCarpetas(Folder [] vectorCarpetas, EmailTreeItem nodoRoot, IniciarSesion inicio) throws MessagingException{
+        EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
+        IniciarSesion is = null;
+        String nombre = null;
+        Folder carpeta = null;
+        nodoVacio = new EmailTreeItem(is, nombre, carpeta);//nodo que tomara el nodo raiz como hijo
+        Properties props = new Properties();
+        props.setProperty("mail.store.protocol", "imaps");
+        Session sesion = Session.getInstance(props);
+        Store store = sesion.getStore("imaps");
+        store.connect("imap.googlemail.com", listaCuentas.get(indice).getUsuario(), listaCuentas.get(indice).getContraseña());
+        Folder [] vectorCarpetas = store.getDefaultFolder().list();
+        //nodoRoot.setExpanded(true);lo comento porq hay qe cambiar el nodo
 
+        nodoVacio.getChildren().add(nodoRoot);
+        for (Folder folder : vectorCarpetas){
+            EmailTreeItem item = new EmailTreeItem(listaCuentas.get(indice), folder.getName(), carpeta);
+            nodoRoot.getChildren().add(item);
+            if(folder.getType()==Folder.HOLDS_FOLDERS){
+                llenarCarpetas(folder.list(), item, listaCuentas.get(indice));
+            }
+        }
+
+    }
     public EmailTreeItem cargarCarpetas() throws MessagingException{
         EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
         IniciarSesion is = null;
@@ -128,7 +151,49 @@ public class Logica {
         }
 
     }
+    public ObservableList<EmailMensaje> cogerCarpetas(Folder carpeta, IniciarSesion inicio){
+        ObservableList<EmailMensaje> lista = FXCollections.observableArrayList();
+        try{
+            if(carpeta!=null && carpeta.getType()==3){
+                if (!carpeta.isOpen())
+                    carpeta.open(Folder.READ_WRITE);
+                for (Message message : carpeta.getMessages()){
+                    lista.add(new EmailMensaje(message));
+                }
+            }
+        }catch(MessagingException e){
+            e.printStackTrace();
+        }
+        return lista;
+    }
     /*
+    public ObservableList<EmailMensaje> getEmailsFolder(Folder folder, EmailAcount loqesea){
+        ObservableList<EmailMensaje> lista = FXCollections.observableArrayList();
+        try{
+            if(folder!null && folder.getType()==3){
+                if (!folder.isOpen()){
+                    folder.open(Folder.READ_WRITE);
+                }
+                for (Message message : folder.getMessages()){
+                    lista.add(new EmailMensaje(message, loqesea));
+                }
+            }
+        }catch()
+    }
+    borrar:
+    Folder trashFolder = emailAconunt.getStore().getFolder"[Gmail]/Papelera);
+    if(currentFolder.getFullName().equals(trashFolder.getFullName())
+        emailmessage.delete();
+
+
+    Nuevo:
+    crear clase getmessageservice
+    extender de Service y tipar con lo que devuelva el método dentro del extends
+    dentro de esta clase, tendremos un protected Task<Observable...<EmailMessage> createTask
+    dentro del tak llamar al metodo Logica.getInstance().getEmailsFolders(folder, loquesea);
+    en el contructor de mi servicio meto los parametros ....falta
+    luego desde el controler principal crearemos un objeto de esta clase, lo arrancamos con el metodo start() y le metemos el metodo setOnSucceded, dentro de este:
+    tableviw.setItems(getMessagesServicies.getValue() y processIndicator
     * aqui hay que crear un metodo que devuelva el mensaje del correo con todos sus elementos
     * Habra que parsearlo con MineMessageParser
     * habra que crear un metodo que sea public EmailTreeItem cargarCarpetas(IniciarSesion inicio)

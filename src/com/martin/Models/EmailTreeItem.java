@@ -27,4 +27,7 @@ public class EmailTreeItem extends TreeItem<String> {
 
         return nodoPrincipal;
     }
+    public Folder getFolder(){
+        return carpeta;
+    }
 }

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
 
 import javax.mail.*;
 import java.io.ObjectInputStream;
@@ -44,14 +45,14 @@ public class Logica {
     private Store store;
     private Folder carpeta;
 
-    public void cargarMensajes(){
+    public void cargarMensajes(Folder folder){
 
         listaMensajes.clear();
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
         Store store;
-        Folder folder = null;
+       // Folder folder = null;
         Message [] vectorMensajes = null;
         String usuario = listaCuentas.get(indice).getUsuario();
         String contraseña = listaCuentas.get(indice).getContraseña();
@@ -71,8 +72,18 @@ public class Logica {
             e.printStackTrace();
         }
     }
+    public TreeItem actualizarTree() throws MessagingException {
+        TreeItem nodoRaizPadre = new TreeItem("Correos");
 
-    public boolean conexion(){
+        for(int i=0; 0<listaCuentas.size(); i++){
+            conexion(listaCuentas.get(i));
+            nodoRaizPadre.setExpanded(true);
+            nodoRaizPadre.getChildren().add(cargarCarpetas());
+        }
+        return nodoRaizPadre;
+    }
+
+    public boolean conexion(IniciarSesion inicio){
         boolean respuesta;
         listaMensajes.clear();
         Properties props = new Properties();
@@ -82,7 +93,8 @@ public class Logica {
         String contraseña = listaCuentas.get(indice).getContraseña();
         try {
             store = sesion.getStore("imaps");
-            store.connect("imap.googlemail.com", usuario, contraseña);
+          // store.connect("imap.googlemail.com", usuario, contraseña);
+            store.connect("imap.googlemail.com", inicio.getUsuario(), inicio.getContraseña());
             respuesta = true;
             return respuesta;
         }catch(MessagingException e){
@@ -91,7 +103,7 @@ public class Logica {
             return respuesta;
         }
     }
-    public void llenandoCarpetas(Folder [] vectorCarpetas, EmailTreeItem nodoRoot, IniciarSesion inicio) throws MessagingException{
+ /*   public void llenandoCarpetas(Folder [] vectorCarpetas, EmailTreeItem nodoRoot, IniciarSesion inicio) throws MessagingException{
         EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
         IniciarSesion is = null;
         String nombre = null;
@@ -114,7 +126,7 @@ public class Logica {
             }
         }
 
-    }
+    }*/
     public EmailTreeItem cargarCarpetas() throws MessagingException{
         EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
         IniciarSesion is = null;

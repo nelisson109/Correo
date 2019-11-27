@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,14 +54,14 @@ public class VentanaLoginController extends BaseController implements Initializa
     }
 
     @FXML
-    public void entrar(ActionEvent event){
+    public void entrar(ActionEvent event) throws MessagingException {
         usuario = tfCorreo.getText();
         contraseña = pfContraseña.getText();
         IniciarSesion inicioCuenta = new IniciarSesion(usuario, contraseña);
         Logica.getInstance().cargarCuentas(inicioCuenta);
-        respuesta = Logica.getInstance().conexion();
+        respuesta = Logica.getInstance().conexion(inicioCuenta);
         inicioCuenta.evaluarLogin(respuesta);
-
+        Logica.getInstance().actualizarTree();//cooper
 
         getStage().close();
     }

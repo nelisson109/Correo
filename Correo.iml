@@ -12,5 +12,6 @@
     <orderEntry type="library" name="javax.mail" level="application" />
     <orderEntry type="library" name="controlsfx-11.0.0" level="application" />
     <orderEntry type="library" name="commons-email-1.4.0" level="application" />
+    <orderEntry type="library" name="org.testfx:testfx-junit:4.0.15-alpha" level="application" />
   </component>
 </module>

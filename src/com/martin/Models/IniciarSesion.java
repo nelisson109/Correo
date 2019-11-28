@@ -16,8 +16,8 @@ public class IniciarSesion {
     }
     public boolean evaluarLogin(boolean respuesta){
 
-        if(usuario.equalsIgnoreCase("martinlg36dam@gmail.com") &&
-                contraseña.equals("helipi67")){
+        if(usuario.equalsIgnoreCase(usuario) &&
+                contraseña.equals(contraseña)){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Login correcto");
             alert.setContentText("El usuario y la contraseña introducidos han sido correctos");

@@ -40,6 +40,9 @@ public class Logica {
     public void cargarCuentas(IniciarSesion inicioCuenta){
         listaCuentas.add(inicioCuenta);
     }
+    public void borrarCuenta(IniciarSesion cuenta){
+        listaCuentas.remove(cuenta);
+    }
 
     private int indice = 0;
     private Store store;
@@ -72,7 +75,7 @@ public class Logica {
             e.printStackTrace();
         }
     }
-    public TreeItem actualizarTree() throws MessagingException {
+    public TreeItem actualizarTree() throws MessagingException {//hay que hacer un metodo que nos cargue el arbol de cada cuenta
         TreeItem nodoRaizPadre = new TreeItem("Correos");
 
         for(int i=0; 0<listaCuentas.size(); i++){
@@ -89,8 +92,8 @@ public class Logica {
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
         Session sesion = Session.getInstance(props);
-        String usuario = listaCuentas.get(indice).getUsuario();
-        String contraseña = listaCuentas.get(indice).getContraseña();
+       // String usuario = listaCuentas.get(indice).getUsuario();
+        //String contraseña = listaCuentas.get(indice).getContraseña();
         try {
             store = sesion.getStore("imaps");
           // store.connect("imap.googlemail.com", usuario, contraseña);

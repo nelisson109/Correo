@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.martin.Views.MisCuentasController">
+   <children>
+      <TableView fx:id="tvCuentas" layoutX="14.0" layoutY="18.0" prefHeight="291.0" prefWidth="571.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
+        <columns>
+          <TableColumn prefWidth="599.0" text="Cuentas" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAñadir" layoutX="335.0" layoutY="335.0" mnemonicParsing="false" onAction="#añadirCuenta" text="Añadir" />
+      <Button fx:id="btnBorrar" layoutX="434.0" layoutY="335.0" mnemonicParsing="false" onAction="#borrarCuenta" text="Borrar" />
+      <Button fx:id="btnModificar" layoutX="224.0" layoutY="335.0" mnemonicParsing="false" text="Modificar" />
+   </children>
+</AnchorPane>

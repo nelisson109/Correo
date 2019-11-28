@@ -29,6 +29,8 @@ public class MainWindowController extends BaseController implements Initializabl
 
     private IniciarSesion inicio;
     @FXML
+    private Button btnCuentas;
+    @FXML
     private Button btnEscribir;
     @FXML
     private Button btnBorrar;
@@ -82,7 +84,7 @@ public class MainWindowController extends BaseController implements Initializabl
                 }
             });
 
-            treeView.getSelectionModel().select(1);
+           // treeView.getSelectionModel().select(1);
 
             tvCorreos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EmailMensaje>() {
                 @Override
@@ -93,10 +95,14 @@ public class MainWindowController extends BaseController implements Initializabl
                     tfAsunto.setText(newValue.getSubject());
                 }
             });
-
-
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void gestionarCuentas(ActionEvent event){
+        MisCuentasController cuentasController = (MisCuentasController) cargarDialogo("MisCuentas.fxml", 650, 540);
+        cuentasController.getStage().setTitle("Iniciar Sesión");
+        cuentasController.abrirDialogo(true);
     }
 }

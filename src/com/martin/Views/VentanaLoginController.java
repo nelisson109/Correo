@@ -58,9 +58,13 @@ public class VentanaLoginController extends BaseController implements Initializa
         usuario = tfCorreo.getText();
         contraseña = pfContraseña.getText();
         IniciarSesion inicioCuenta = new IniciarSesion(usuario, contraseña);
-        Logica.getInstance().cargarCuentas(inicioCuenta);
+
         respuesta = Logica.getInstance().conexion(inicioCuenta);
         inicioCuenta.evaluarLogin(respuesta);
+        if (respuesta==true)
+            Logica.getInstance().cargarCuentas(inicioCuenta);
+
+
         Logica.getInstance().actualizarTree();//cooper
 
         getStage().close();

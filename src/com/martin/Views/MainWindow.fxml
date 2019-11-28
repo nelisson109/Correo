@@ -71,6 +71,7 @@
                                     </TableView>
                                  </children>
                               </AnchorPane>
+                              <Button fx:id="btnCuentas" layoutX="406.0" layoutY="35.0" mnemonicParsing="false" onAction="#gestionarCuentas" text="Cuentas" />
                            </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

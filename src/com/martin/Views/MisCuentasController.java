@@ -6,7 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import org.controlsfx.control.action.Action;
 
 import java.net.URL;
@@ -25,6 +27,11 @@ public class MisCuentasController extends BaseController implements Initializabl
     @FXML
     private Button btnModificar;
 
+    @FXML
+    private TextField tfCorreo;
+    @FXML
+    private PasswordField pfContraseña;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tvCuentas.setItems(Logica.getInstance().getListaCuentas());
@@ -33,16 +40,23 @@ public class MisCuentasController extends BaseController implements Initializabl
     @FXML
     public void añadirCuenta(ActionEvent event){
         String usuario, contraseña;
+
         boolean respuesta;
-        IniciarSesion cuenta = new IniciarSesion(null, null);
+       // IniciarSesion cuenta = new IniciarSesion("eduardocapinjavafx@gmail.com", "eduardojavafx");
+
         //se me abrirá la ventana del login
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
         loginController.getStage().setTitle("Iniciar Sesión");
         loginController.abrirDialogo(true);
+        usuario = tfCorreo.getText();
+        contraseña = pfContraseña.getText();
+        IniciarSesion cuenta = new IniciarSesion(usuario, contraseña);
 
         respuesta = Logica.getInstance().conexion(cuenta);
         cuenta.evaluarLogin(respuesta);
         Logica.getInstance().cargarCuentas(new IniciarSesion("eduardocapinjavafx@gmail.com", "eduardojavafx"));//esto no es aqui
+        tvCuentas.setItems(Logica.getInstance().getListaCuentas());
+        //llamar al actualizarTree
         //Logica.getInstance().cargarCuentas(cuenta);cuando la cuenta la meta el usuario por teclado
 
 

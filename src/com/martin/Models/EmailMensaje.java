@@ -1,6 +1,7 @@
 package com.martin.Models;
 
 import javax.mail.Address;
+import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -11,6 +12,28 @@ import org.apache.commons.mail.util.MimeMessageParser;
 public class EmailMensaje {
     private Message message;
     private MimeMessageParser parser;
+    /* ESCRIBIR NO LEIDOS EN NEGRITA
+    * en esta clase hay qe crear un metodo q devuelva boolean estaLeido()
+    * Flag.SEEN
+    * return message.isSet(Flag.SEEN)
+    * en el inicialize del main:
+    * tableview de emails.setRowFactory(new Callback...
+    * return new TableRow<EmailMesage>
+    protected void updateItem(EmailMessage comosellame, boolean e)
+    * if(emailMensaje!=null){
+    * if(emailMessage.isRead())
+    *   setStyle("-fx-font-weight:blod")
+    * else
+    * setStyle("");*/
+
+    public boolean isRead(){
+        try{
+            return message.isSet(Flags.Flag.SEEN);
+        }catch(MessagingException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
 
 
     public EmailMensaje(Message message) {

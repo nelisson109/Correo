@@ -10,6 +10,7 @@ public class IniciarSesion {
     private String usuario;
     private String contraseña;
 
+
     public IniciarSesion(String usuario, String contraseña) {
         this.usuario = usuario;
         this.contraseña = contraseña;

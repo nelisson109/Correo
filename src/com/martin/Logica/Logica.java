@@ -78,7 +78,7 @@ public class Logica {
     public TreeItem actualizarTree() throws MessagingException {//hay que hacer un metodo que nos cargue el arbol de cada cuenta
         TreeItem nodoRaizPadre = new TreeItem("Correos");
 
-        for(int i=0; 0<listaCuentas.size(); i++){
+        for(int i=0; 0<listaCuentas.size(); i++){//llamar al cerrar la ventana del login y asignarselo al treeview
             conexion(listaCuentas.get(i));
             nodoRaizPadre.setExpanded(true);
             nodoRaizPadre.getChildren().add(cargarCarpetas());
@@ -166,7 +166,7 @@ public class Logica {
         }
 
     }
-    public ObservableList<EmailMensaje> cogerCarpetas(Folder carpeta, IniciarSesion inicio){
+ /*   public ObservableList<EmailMensaje> cogerCarpetas(Folder carpeta, IniciarSesion inicio){
         ObservableList<EmailMensaje> lista = FXCollections.observableArrayList();
         try{
             if(carpeta!=null && carpeta.getType()==3){
@@ -180,7 +180,7 @@ public class Logica {
             e.printStackTrace();
         }
         return lista;
-    }
+    }*/
     /*
     public ObservableList<EmailMensaje> getEmailsFolder(Folder folder, EmailAcount loqesea){
         ObservableList<EmailMensaje> lista = FXCollections.observableArrayList();

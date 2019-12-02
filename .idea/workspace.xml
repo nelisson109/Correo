@@ -2,23 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6311ca9-f39e-4d06-9254-c01434b3d71a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Views/EscribirCorreoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Views/MisCuentas.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Views/MisCuentasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/EmailMensaje.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/EmailMensaje.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/IniciarSesion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/IniciarSesion.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Models/EmailMensaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Models/EmailMensaje.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Models/IniciarSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Models/IniciarSesion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MisCuentas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MisCuentas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MisCuentasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MisCuentasController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,5 +156,16 @@
     <MESSAGE value="muriendo con log" />
     <MESSAGE value="cuentas multiples" />
     <option name="LAST_COMMIT_MESSAGE" value="cuentas multiples" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/martin/Views/VentanaLoginController.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

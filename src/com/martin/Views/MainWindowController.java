@@ -1,12 +1,15 @@
 package com.martin.Views;
 
 import com.martin.Logica.Logica;
+import com.martin.Logica.Services.HiloMensaje;
 import com.martin.Models.EmailMensaje;
 import com.martin.Models.EmailTreeItem;
 import com.martin.Models.IniciarSesion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
@@ -64,8 +67,6 @@ public class MainWindowController extends BaseController implements Initializabl
         loginController.getStage().setTitle("Iniciar Sesión");
         loginController.abrirDialogo(true);
 
-        tvCorreos.setItems(Logica.getInstance().getListaMensajes());//muestro la lista de mensajes en el tableview. Hay que quitarla para q muestre lo de cada carpeta
-
         try {
             EmailTreeItem item = Logica.getInstance().cargarCarpetas();
 
@@ -74,18 +75,25 @@ public class MainWindowController extends BaseController implements Initializabl
             treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {//nos suscribimos a cambios
                 @Override
                 public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                    Logica.getInstance().cargarMensajes(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder());
-                    tvCorreos.setItems(Logica.getInstance().getListaMensajes());
+                   // Logica.getInstance().cargarMensajes(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder());
+                   // tvCorreos.setItems(Logica.getInstance().cargarMensajes(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder()));
+                    HiloMensaje servicio = new HiloMensaje(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder());
+                    servicio.start();
+                    servicio.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+                        @Override
+                        public void handle(WorkerStateEvent workerStateEvent) {
+                            tvCorreos.setItems(servicio.getValue());
+                        }
+                    });
                 }
             });
-
-           // treeView.getSelectionModel().select(1);
 
             tvCorreos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EmailMensaje>() {
                 @Override
                 public void changed(ObservableValue<? extends EmailMensaje> observableValue, EmailMensaje oldValue, EmailMensaje newValue) {
                     webEngine = webVista.getEngine();
-                    webEngine.loadContent(newValue.getContent());
+
+                    webEngine.loadContent(newValue.getContent());//gestionar cuando borras y trata de cargarlo, if(
                     tfRemitente.setText(newValue.getFrom());
                     tfAsunto.setText(newValue.getSubject());
                 }
@@ -95,9 +103,23 @@ public class MainWindowController extends BaseController implements Initializabl
         }
     }
     @FXML
+    public void borrarEmail(ActionEvent event){
+        EmailMensaje mensaje = tvCorreos.getSelectionModel().getSelectedItem();
+        EmailTreeItem item = (EmailTreeItem) treeView.getSelectionModel().getSelectedItem();
+
+        Logica.getInstance().borrarMensaje(mensaje, item);
+        Folder f = ((EmailTreeItem) treeView.getSelectionModel().getSelectedItem()).getFolder();
+        tvCorreos.setItems(Logica.getInstance().cargarMensajes(f));
+    }
+    @FXML
     public void gestionarCuentas(ActionEvent event){
         MisCuentasController cuentasController = (MisCuentasController) cargarDialogo("MisCuentas.fxml", 650, 540);
         cuentasController.getStage().setTitle("Iniciar Sesión");
         cuentasController.abrirDialogo(true);
+        try {
+            treeView.setRoot(Logica.getInstance().cargarCarpetas());
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -44,7 +44,6 @@ public class MisCuentasController extends BaseController implements Initializabl
         boolean respuesta;
        // IniciarSesion cuenta = new IniciarSesion("eduardocapinjavafx@gmail.com", "eduardojavafx");
 
-        //se me abrirá la ventana del login
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
         loginController.getStage().setTitle("Iniciar Sesión");
         loginController.abrirDialogo(true);
@@ -54,10 +53,7 @@ public class MisCuentasController extends BaseController implements Initializabl
 
         respuesta = Logica.getInstance().conexion(cuenta);
         cuenta.evaluarLogin(respuesta);
-        Logica.getInstance().cargarCuentas(new IniciarSesion("eduardocapinjavafx@gmail.com", "eduardojavafx"));//esto no es aqui
         tvCuentas.setItems(Logica.getInstance().getListaCuentas());
-        //llamar al actualizarTree
-        //Logica.getInstance().cargarCuentas(cuenta);cuando la cuenta la meta el usuario por teclado
 
 
     }

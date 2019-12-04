@@ -35,6 +35,10 @@ public class EmailMensaje {
         return true;
     }
 
+    public Message getMensaje(){
+        return message;
+    }
+
 
     public EmailMensaje(Message message) {
         this.message = message;

@@ -4,11 +4,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import javax.mail.Store;
+
 public class IniciarSesion {
     private TextField tfCorreo;
     private PasswordField pfContraseña;
     private String usuario;
     private String contraseña;
+    private Store store;
 
 
     public IniciarSesion(String usuario, String contraseña) {
@@ -49,5 +52,13 @@ public class IniciarSesion {
     }
     public PasswordField getPfContraseña() {
         return pfContraseña;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
     }
 }

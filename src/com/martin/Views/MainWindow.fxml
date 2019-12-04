@@ -108,7 +108,7 @@
                                     <ToolBar orientation="VERTICAL" prefHeight="289.0" prefWidth="89.0">
                                       <items>
                                           <Button fx:id="btnEscribir" mnemonicParsing="false" text="Escribir" />
-                                          <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" />
+                                          <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" onAction="#borrarEmail" />
                                           <Button fx:id="btnResponder" mnemonicParsing="false" text="Responder" />
                                         <Button fx:id="btnReenviar" mnemonicParsing="false" text="Reenviar" />
                                       </items>

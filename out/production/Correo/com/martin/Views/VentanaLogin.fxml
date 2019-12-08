@@ -11,24 +11,23 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.martin.Views.VentanaLoginController">
    <children>
-      <ImageView fitHeight="103.0" fitWidth="263.0" layoutX="149.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="263.0" layoutX="149.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="149.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@Res/gmal.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="59.0" layoutY="152.0" text="Usuario:">
+      <Label layoutX="59.0" layoutY="152.0" text="Usuario:" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="476.0" AnchorPane.topAnchor="152.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="222.0" text="Contraseña">
+      <Label layoutX="59.0" layoutY="222.0" text="Contraseña" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="451.0" AnchorPane.topAnchor="222.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tfCorreo" layoutX="261.0" layoutY="153.0" />
-      <Button fx:id="btnLogin" layoutX="300.0" layoutY="304.0" mnemonicParsing="false" onAction="#entrar" text="Login" />
-      <PasswordField fx:id="pfContraseña" layoutX="261.0" layoutY="223.0" />
-      <Button fx:id="btnCrearCuenta" layoutX="149.0" layoutY="304.0" mnemonicParsing="false" text="Crear Cuenta" />
+      <TextField fx:id="tfCorreo" layoutX="261.0" layoutY="153.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="153.0" />
+      <Button fx:id="btnLogin" layoutX="300.0" layoutY="304.0" mnemonicParsing="false" onAction="#entrar" text="Login" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="304.0" />
+      <PasswordField fx:id="pfContraseña" layoutX="261.0" layoutY="223.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="223.0" />
    </children>
 </AnchorPane>

@@ -10,6 +10,8 @@ import javafx.scene.control.TreeItem;
 import org.apache.commons.mail.Email;
 
 import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -139,6 +141,31 @@ public class Logica {
             }
         }
 
+    }
+
+    public void escribirCorreo(String desde, String para, String asunto, String contenido){
+        IniciarSesion cuenta = null;
+        String contraseña;
+        for(int i=0; i<listaCuentas.size(); i++){
+            if (listaCuentas.get(i).getUsuario().equals(desde)){
+                contraseña = listaCuentas.get(i).getContraseña();
+                cuenta = listaCuentas.get(i);
+            }
+        }
+        try {
+            MimeMessage message = new MimeMessage(cuenta.getSession());
+            message.setFrom(new InternetAddress(desde));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
+            message.setSubject(asunto);
+            message.setText(contenido);
+            // message.setContent(contenido);
+            Transport transport = cuenta.getSession().getTransport("smtp");
+            transport.connect(cuenta.getUsuario(), cuenta.getContraseña());
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        }catch(MessagingException e){
+            e.printStackTrace();
+        }
     }
 
 }

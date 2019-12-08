@@ -122,4 +122,12 @@ public class MainWindowController extends BaseController implements Initializabl
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void escribir(ActionEvent event){
+        EscribirCorreoController nuevoCorreo = (EscribirCorreoController) cargarDialogo("EscribirCorreo.fxml", 750, 600);
+        nuevoCorreo.getStage().setTitle("Nuevo Correo");
+        nuevoCorreo.abrirDialogo(true);
+    }
+
 }

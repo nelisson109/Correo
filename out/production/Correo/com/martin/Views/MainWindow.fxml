@@ -2,9 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -41,18 +38,6 @@
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <MenuBar layoutX="409.0" layoutY="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <menus>
-                                    <Menu fx:id="barAcciones" mnemonicParsing="false" text="Acción">
-                                       <items>
-                                          <MenuItem fx:id="itemNuevo" mnemonicParsing="false" text="Nuevo" />
-                                          <MenuItem fx:id="itemBorrar" mnemonicParsing="false" text="Borrar" />
-                                          <MenuItem fx:id="itemResponder" mnemonicParsing="false" text="Responder" />
-                                          <MenuItem fx:id="itemReenviar" mnemonicParsing="false" text="Reenviar" />
-                                       </items>
-                                    </Menu>
-                                 </menus>
-                              </MenuBar>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="406.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <TableView fx:id="tvCorreos" prefHeight="290.0" prefWidth="406.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -71,7 +56,7 @@
                                     </TableView>
                                  </children>
                               </AnchorPane>
-                              <Button fx:id="btnCuentas" layoutX="406.0" layoutY="35.0" mnemonicParsing="false" onAction="#gestionarCuentas" text="Cuentas" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0" />
+                              <Button fx:id="btnCuentas" layoutX="415.0" layoutY="2.0" mnemonicParsing="false" onAction="#gestionarCuentas" text="Cuentas" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -107,8 +92,8 @@
                                     </SplitPane>
                                     <ToolBar orientation="VERTICAL" prefHeight="289.0" prefWidth="89.0">
                                       <items>
-                                          <Button fx:id="btnEscribir" mnemonicParsing="false" text="Escribir" />
-                                          <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" onAction="#borrarEmail" />
+                                          <Button fx:id="btnEscribir" mnemonicParsing="false" onAction="#escribir" text="Escribir" />
+                                          <Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#borrarEmail" text="Borrar" />
                                           <Button fx:id="btnResponder" mnemonicParsing="false" text="Responder" />
                                         <Button fx:id="btnReenviar" mnemonicParsing="false" text="Reenviar" />
                                       </items>

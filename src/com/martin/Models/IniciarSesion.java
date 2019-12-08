@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import javax.mail.Session;
 import javax.mail.Store;
 
 public class IniciarSesion {
@@ -12,6 +13,7 @@ public class IniciarSesion {
     private String usuario;
     private String contraseña;
     private Store store;
+    private Session session;
 
 
     public IniciarSesion(String usuario, String contraseña) {
@@ -60,5 +62,13 @@ public class IniciarSesion {
 
     public void setStore(Store store) {
         this.store = store;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

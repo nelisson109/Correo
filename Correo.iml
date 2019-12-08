@@ -8,10 +8,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javafx13" level="application" />
-    <orderEntry type="library" name="javafx13" level="application" />
-    <orderEntry type="library" name="javax.mail" level="application" />
-    <orderEntry type="library" name="controlsfx-11.0.0" level="application" />
-    <orderEntry type="library" name="commons-email-1.4.0" level="application" />
-    <orderEntry type="library" name="org.testfx:testfx-junit:4.0.15-alpha" level="application" />
+    <orderEntry type="library" exported="" name="javafx13" level="application" />
+    <orderEntry type="library" exported="" name="javax.mail" level="application" />
+    <orderEntry type="library" exported="" name="controlsfx-11.0.0" level="application" />
+    <orderEntry type="library" exported="" name="commons-email-1.4.0" level="application" />
+    <orderEntry type="library" exported="" name="org.testfx:testfx-junit:4.0.15-alpha" level="application" />
   </component>
 </module>

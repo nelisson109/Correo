@@ -7,13 +7,13 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
+import javafx.scene.web.HTMLEditor;
 import org.apache.commons.mail.Email;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -21,6 +21,10 @@ public class Logica {
     private ObservableList<EmailMensaje> listaMensajes = FXCollections.observableArrayList();
     private ObservableList<IniciarSesion> listaCuentas = FXCollections.observableArrayList();
     private EmailTreeItem nodoVacio;
+    private ArrayList<IniciarSesion> misCuentas = new ArrayList<>();
+    private ArrayList<IniciarSesion> misCuentas2 = new ArrayList<>();
+    private ObjectInputStream lectura;
+    private ObjectOutputStream escritura;
 
     private static Logica INSTANCE = null;
 
@@ -50,6 +54,58 @@ public class Logica {
     private int indice = 0;
     private Store store;
     private Folder carpeta;
+
+    public void escribirObjetos(File fichero){
+
+        try {
+            for (IniciarSesion i:misCuentas) {
+                misCuentas2.add(i);
+            }
+            escritura = new ObjectOutputStream(new FileOutputStream(fichero));
+            escritura.writeObject(misCuentas2);
+        }catch(FileNotFoundException e){
+            e.getMessage();
+            System.out.println("Error. No se encuentra el fichero");
+        }catch(IOException e){
+            e.getMessage();
+        }finally {
+            try{
+                if(escritura!=null){
+                    escritura.close();
+                }
+            }catch (IOException e){
+                System.out.println("Error al cerrar el fichero para escritura");
+            }
+        }
+    }
+
+    public void leerObjetos(File fichero){
+        try {
+            lectura = new ObjectInputStream(new FileInputStream(fichero));
+            misCuentas2 = (ArrayList<IniciarSesion>) lectura.readObject();
+            for (IniciarSesion i:misCuentas2) {
+                misCuentas.add(i);
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("No se ha encontrado el fichero para leer");
+            e.getLocalizedMessage();
+        }catch(IOException e){
+            e.getMessage();
+            System.out.println("Error de entrada/salida");
+        }catch(ClassNotFoundException e){
+            System.out.println("No se ha encontrado la clase");
+            e.getLocalizedMessage();
+        }finally {
+            try{
+                if(lectura != null){
+                    lectura.close();
+                }
+            }catch(IOException e){
+                e.getMessage();
+                System.out.println("Error al cerrar el fichero");
+            }
+        }
+    }
 
     public ObservableList<EmailMensaje> cargarMensajes(Folder folder){
 
@@ -96,9 +152,12 @@ public class Logica {
         listaMensajes.clear();
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "imaps");
-        props.setProperty("mail.smtp.host", "smtp.gmail.com");
-        props.setProperty("mail.smtp.port", "587");
-        props.setProperty("mail.smtp.smarttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.user", inicio.getUsuario());
+        props.put("mail.smtp.clave", inicio.getContraseña());
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
         Session sesion = Session.getInstance(props);
        // String usuario = listaCuentas.get(indice).getUsuario();
         //String contraseña = listaCuentas.get(indice).getContraseña();
@@ -143,29 +202,35 @@ public class Logica {
 
     }
 
-    public void escribirCorreo(String desde, String para, String asunto, String contenido){
+    public void escribirCorreo(String desde, String para, String asunto, HTMLEditor contenido){
+        boolean conection;
         IniciarSesion cuenta = null;
         String contraseña;
         for(int i=0; i<listaCuentas.size(); i++){
             if (listaCuentas.get(i).getUsuario().equals(desde)){
                 contraseña = listaCuentas.get(i).getContraseña();
                 cuenta = listaCuentas.get(i);
+
             }
         }
-        try {
-            MimeMessage message = new MimeMessage(cuenta.getSession());
-            message.setFrom(new InternetAddress(desde));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(para));
-            message.setSubject(asunto);
-            message.setText(contenido);
-            // message.setContent(contenido);
-            Transport transport = cuenta.getSession().getTransport("smtp");
-            transport.connect(cuenta.getUsuario(), cuenta.getContraseña());
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        }catch(MessagingException e){
-            e.printStackTrace();
+        conection = conexion(cuenta);
+        if (conection) {
+            try {
+                MimeMessage message = new MimeMessage(cuenta.getSession());
+                message.setFrom(new InternetAddress(desde));
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(para));
+                message.setSubject(asunto);
+               // message.setText(contenido);
+                 message.setContent(contenido.getHtmlText(), "text/html");
+                Transport transport = cuenta.getSession().getTransport("smtp");
+                transport.connect(cuenta.getUsuario(), cuenta.getContraseña());
+                transport.sendMessage(message, message.getAllRecipients());
+                transport.close();
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         }
     }
+
 
 }

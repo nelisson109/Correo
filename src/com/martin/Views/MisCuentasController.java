@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.action.Action;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -54,6 +55,8 @@ public class MisCuentasController extends BaseController implements Initializabl
         respuesta = Logica.getInstance().conexion(cuenta);
         cuenta.evaluarLogin(respuesta);
         tvCuentas.setItems(Logica.getInstance().getListaCuentas());
+        File fichero = new File("ficheroCuentas.dat");
+        Logica.getInstance().escribirObjetos(fichero);
 
 
     }

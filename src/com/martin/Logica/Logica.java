@@ -236,14 +236,12 @@ public class Logica {
         boolean conection;
 
         String contraseña;
-       // for(int i=0; i<listaCuentas.size(); i++){
-         //   if (listaCuentas.get(i).getUsuario().equals(desde)){
-           //     contraseña = listaCuentas.get(i).getContraseña();
-             //   cuenta = listaCuentas.get(i);
-
-         //   }
-        //}
-    cuenta = Logica.getInstance().getListaCuentas().get(0);
+        for(int i=0; i<listaCuentas.size(); i++){
+            if (listaCuentas.get(i).getUsuario().equals(desde)){
+                cuenta = getListaCuentas().get(i);
+            }
+        }
+//    cuenta = Logica.getInstance().getListaCuentas().get(0);
 
        // conection = conexion(cuenta);
        // if (conection) {

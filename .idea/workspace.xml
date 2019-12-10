@@ -4,14 +4,8 @@
     <list default="true" id="b6311ca9-f39e-4d06-9254-c01434b3d71a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLogin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Logica/Services/HiloMensaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Logica/Services/HiloMensaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/EscribirCorreo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/EscribirCorreo.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575834562868</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="reenviar y responder">
+      <created>1576012852685</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1576012852685</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,7 +159,8 @@
     <MESSAGE value="muriendo con log" />
     <MESSAGE value="cuentas multiples" />
     <MESSAGE value="enviar correos" />
-    <option name="LAST_COMMIT_MESSAGE" value="enviar correos" />
+    <MESSAGE value="reenviar y responder" />
+    <option name="LAST_COMMIT_MESSAGE" value="reenviar y responder" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

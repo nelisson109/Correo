@@ -34,7 +34,7 @@
       </AnchorPane>
       <AnchorPane layoutY="105.0" prefHeight="295.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="105.0">
          <children>
-            <HTMLEditor fx:id="cajaHtml" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="240.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <HTMLEditor fx:id="cajaHtml" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="240.0" prefWidth="600.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Button fx:id="btnCancelar" layoutX="382.0" layoutY="263.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="71.0" text="Cancelar" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="484.0" />
             <Button fx:id="btnEnviar" layoutX="389.0" layoutY="263.0" mnemonicParsing="false" onAction="#enviar" text="Enviar" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="389.0" />
             <Button fx:id="btnAdjuntar" layoutX="265.0" layoutY="263.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Adjuntar" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="265.0" />

@@ -5,9 +5,7 @@ import com.martin.Models.EmailMensaje;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-
 import javax.mail.Folder;
-
 
 public class HiloMensaje extends Service<ObservableList<EmailMensaje>> {
 

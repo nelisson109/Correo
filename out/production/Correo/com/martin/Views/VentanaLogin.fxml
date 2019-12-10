@@ -27,7 +27,7 @@
          </font>
       </Label>
       <TextField fx:id="tfCorreo" layoutX="261.0" layoutY="153.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="153.0" />
-      <Button fx:id="btnLogin" layoutX="300.0" layoutY="304.0" mnemonicParsing="false" onAction="#entrar" text="Login" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="304.0" />
+      <Button fx:id="btnLogin" layoutX="275.0" layoutY="304.0" mnemonicParsing="false" onAction="#entrar" prefHeight="27.0" prefWidth="71.0" text="Login" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="304.0" />
       <PasswordField fx:id="pfContraseña" layoutX="261.0" layoutY="223.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="223.0" />
    </children>
 </AnchorPane>

@@ -130,4 +130,24 @@ public class MainWindowController extends BaseController implements Initializabl
         nuevoCorreo.abrirDialogo(true);
     }
 
+    @FXML
+    public void responder(ActionEvent event){
+        String remitente;
+        remitente = tvCorreos.getSelectionModel().getSelectedItem().getFrom();
+
+        EscribirCorreoController nuevoCorreo = (EscribirCorreoController) cargarDialogo("EscribirCorreo.fxml", 750, 600);
+        nuevoCorreo.setPara(remitente);
+        nuevoCorreo.getStage().setTitle("Responder Correo");
+        nuevoCorreo.abrirDialogo(true);
+    }
+
+    @FXML
+    public void reenviar(ActionEvent event){
+        String contenido = tvCorreos.getSelectionModel().getSelectedItem().getContent();
+        EscribirCorreoController nuevoCorreo = (EscribirCorreoController) cargarDialogo("EscribirCorreo.fxml", 750, 600);
+        nuevoCorreo.setContenido(contenido);
+        nuevoCorreo.getStage().setTitle("Reenviar Correo");
+        nuevoCorreo.abrirDialogo(true);
+    }
+
 }

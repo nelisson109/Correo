@@ -176,10 +176,8 @@ public class Logica {
             return respuesta;
         }
     }
-
-    private Session getSession(IniciarSesion usuarioCorreo){
-        System.out.println("Preparing to send email");
-        Properties properties = new Properties();
+    private Session getSession(IniciarSesion cuenta){
+        Properties props = new Properties();
         MailSSLSocketFactory sf = null;
         try {
             sf = new MailSSLSocketFactory();
@@ -187,27 +185,20 @@ public class Logica {
             e.printStackTrace();
         }
         sf.setTrustAllHosts(true);
-        properties.put("mail.imaps.ssl.trust", "*");
-        properties.put("mail.imaps.ssl.socketFactory", sf);
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        //Enable authentication
-        properties.put("mail.smtp.auth", "true");
-        //Set TLS encryption enabled
-        properties.put("mail.smtp.starttls.enable", "true");
-        //Set SMTP host
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        //Set smtp port
-        properties.put("mail.smtp.port", "587");
+        props.put("mail.imaps.ssl.trust", "*");
+        props.put("mail.imaps.ssl.socketFactory", sf);
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
 
-        //Your gmail address
-        String myAccountEmail = usuarioCorreo.getUsuario();
-        //Your gmail password
-        String password = usuarioCorreo.getContraseña();
-        //Create a session with account credentials
-        Session session = Session.getInstance(properties, new Authenticator() {
+        String emailUser = cuenta.getUsuario();
+        String pass = cuenta.getContraseña();
+        Session session = Session.getInstance(props, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(myAccountEmail, password);
+                return new PasswordAuthentication(emailUser, pass);
             }
         });
         return session;
@@ -241,7 +232,7 @@ public class Logica {
 
     }
 
-    public void escribirCorreo( IniciarSesion cuenta, String desde, String para, String asunto, HTMLEditor contenido){
+    public void escribirCorreo(IniciarSesion cuenta, String desde, String para, String asunto, HTMLEditor contenido){
         boolean conection;
 
         String contraseña;

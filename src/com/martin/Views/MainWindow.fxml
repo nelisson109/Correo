@@ -94,8 +94,8 @@
                                       <items>
                                           <Button fx:id="btnEscribir" mnemonicParsing="false" onAction="#escribir" text="Escribir" />
                                           <Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#borrarEmail" text="Borrar" />
-                                          <Button fx:id="btnResponder" mnemonicParsing="false" text="Responder" />
-                                        <Button fx:id="btnReenviar" mnemonicParsing="false" text="Reenviar" />
+                                          <Button fx:id="btnResponder" mnemonicParsing="false" onAction="#responder" text="Responder" />
+                                        <Button fx:id="btnReenviar" mnemonicParsing="false" onAction="#reenviar" text="Reenviar" />
                                       </items>
                                     </ToolBar>
                                 </items>

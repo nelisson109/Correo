@@ -13,5 +13,6 @@
     <orderEntry type="library" exported="" name="controlsfx-11.0.0" level="application" />
     <orderEntry type="library" exported="" name="commons-email-1.4.0" level="application" />
     <orderEntry type="library" exported="" name="org.testfx:testfx-junit:4.0.15-alpha" level="application" />
+    <orderEntry type="library" name="commons-email-1.4.01" level="application" />
   </component>
 </module>

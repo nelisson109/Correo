@@ -49,12 +49,17 @@ public class EscribirCorreoController extends BaseController implements Initiali
     }
     @FXML
     public void enviar(ActionEvent event){
-        IniciarSesion iniciarSesion = null;
+        IniciarSesion a = null;
         String usuario = cbMisCuentas.getSelectionModel().getSelectedItem();
        // if(Logica.getInstance().conexion(iniciarSesion))
-            Logica.getInstance().escribirCorreo(usuario, tfPara.getText(), tfAsunto.getText(), cajaHtml);
-        getStage().close();
+        for (int i =0; i<Logica.getInstance().getListaCuentas().size(); i++) {
+            if (usuario.equals(Logica.getInstance().getListaCuentas().get(i).getUsuario())) {
+                a = Logica.getInstance().getListaCuentas().get(i);
 
+            }
+        }
+        Logica.getInstance().escribirCorreo(a, usuario, tfPara.getText(), tfAsunto.getText(), cajaHtml);
+        getStage().close();
 
     }
 

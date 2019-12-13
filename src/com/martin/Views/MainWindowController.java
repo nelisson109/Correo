@@ -102,6 +102,14 @@ public class MainWindowController extends BaseController implements Initializabl
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void examen(ActionEvent event){
+        VentanaComboController controller = (VentanaComboController) cargarDialogo("VentanaCombo.fxml", 400, 400);
+        controller.getStage().setTitle("pantalla combo");
+        controller.abrirDialogo(true);
+    }
+
     @FXML
     public void borrarEmail(ActionEvent event){
         EmailMensaje mensaje = tvCorreos.getSelectionModel().getSelectedItem();

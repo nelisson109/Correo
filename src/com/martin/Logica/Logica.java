@@ -128,6 +128,8 @@ public class Logica {
         }
         return listaMensajes;
     }
+
+
     public void borrarMensaje(EmailMensaje mensaje, EmailTreeItem item){
         if (item.getFolder().toString().equals("[Gmail]/Papelera")){
             try {

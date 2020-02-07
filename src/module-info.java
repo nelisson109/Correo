@@ -5,9 +5,10 @@ module Unidad2javaFXejemplo {
     requires javafx.web;
     requires java.base;
     requires org.controlsfx.controls;
-
     requires java.mail;
     requires commons.email;
+    requires Reloj;
+
     exports com.martin;
     exports com.martin.Logica;
     exports com.martin.Models;

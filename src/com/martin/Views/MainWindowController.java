@@ -10,23 +10,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import martin.Reloj;
 
 import javax.mail.Folder;
 import javax.mail.MessagingException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class MainWindowController extends BaseController implements Initializable {
 
@@ -60,12 +54,16 @@ public class MainWindowController extends BaseController implements Initializabl
     private TextField tfRemitente, tfAsunto;
     @FXML
     private TableView<EmailMensaje> tvCorreos;
+    @FXML
+    private Reloj reloj;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
         loginController.getStage().setTitle("Iniciar Sesión");
         loginController.abrirDialogo(true);
+
+        reloj.comenzar();
 
         try {
             EmailTreeItem item = Logica.getInstance().cargarCarpetas();

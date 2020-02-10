@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tvTareas" prefHeight="189.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Horas" />
+          <TableColumn prefWidth="88.0" text="Minutos" />
+            <TableColumn prefWidth="100.0" text="Segundos" />
+            <TableColumn prefWidth="137.0" text="Fecha" />
+            <TableColumn prefWidth="199.0" text="Texto" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAñadir" layoutX="493.0" layoutY="229.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="67.0" text="Añadir" />
+      <Button fx:id="btnEliminar" layoutX="493.0" layoutY="317.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="67.0" text="Eliminar" />
+      <DatePicker fx:id="dpFecha" layoutX="97.0" layoutY="200.0" />
+      <TextField fx:id="tfHoras" layoutX="97.0" layoutY="252.0" />
+      <TextField fx:id="tfMinutos" layoutX="97.0" layoutY="298.0" />
+      <TextField fx:id="tfSegundos" layoutX="97.0" layoutY="340.0" />
+      <TextField fx:id="tfTexto" layoutX="300.0" layoutY="274.0" prefHeight="86.0" prefWidth="149.0" />
+      <Label layoutX="29.0" layoutY="204.0" text="Fecha:" />
+      <Label layoutX="29.0" layoutY="256.0" text="Hora:" />
+      <Label layoutX="32.0" layoutY="302.0" text="Minutos:" />
+      <Label layoutX="30.0" layoutY="344.0" text="Segundos:" />
+      <Label layoutX="300.0" layoutY="239.0" text="Texto:" />
+   </children>
+</AnchorPane>

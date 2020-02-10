@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.web.HTMLEditor;
+import martin.Tarea;
 import org.apache.commons.mail.Email;
 
 import javax.mail.*;
@@ -27,6 +28,7 @@ public class Logica {
     private ArrayList<IniciarSesion> misCuentas2 = new ArrayList<>();
     private ObjectInputStream lectura;
     private ObjectOutputStream escritura;
+    private ObservableList<Tarea> listaTareas = FXCollections.observableArrayList();
 
     private static Logica INSTANCE = null;
 
@@ -44,6 +46,15 @@ public class Logica {
     }
     public ObservableList<IniciarSesion> getListaCuentas(){
         return listaCuentas;
+    }
+    public ObservableList<Tarea> getListaTareas(){
+        return listaTareas;
+    }
+    public void añadirTarea(Tarea tarea){
+        listaTareas.add(tarea);
+    }
+    public void borrarTarea(Tarea tarea){
+        listaTareas.remove(tarea);
     }
 
     public void cargarCuentas(IniciarSesion inicioCuenta){

@@ -102,6 +102,11 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     @FXML
+    public void pantallaTareas(ActionEvent event){
+
+    }
+
+    @FXML
     public void examen(ActionEvent event){
         VentanaComboController controller = (VentanaComboController) cargarDialogo("VentanaCombo.fxml", 400, 400);
         controller.getStage().setTitle("pantalla combo");

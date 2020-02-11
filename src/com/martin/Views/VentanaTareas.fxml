@@ -9,15 +9,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.martin.Views.VentanaTareasController">
    <children>
       <TableView fx:id="tvTareas" prefHeight="189.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Horas" />
-          <TableColumn prefWidth="88.0" text="Minutos" />
-            <TableColumn prefWidth="100.0" text="Segundos" />
-            <TableColumn prefWidth="137.0" text="Fecha" />
-            <TableColumn prefWidth="199.0" text="Texto" />
+            <TableColumn prefWidth="75.0" text="Horas">
+                <cellValueFactory>
+                    <PropertyValueFactory property="horas" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="88.0" text="Minutos">
+                <cellValueFactory>
+                    <PropertyValueFactory property="minutos" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100.0" text="Segundos">
+                <cellValueFactory>
+                    <PropertyValueFactory property="segundos" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="137.0" text="Fecha">
+                <cellValueFactory>
+                    <PropertyValueFactory property="fecha" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="199.0" text="Texto">
+                <cellValueFactory>
+                    <PropertyValueFactory property="texto" />
+                </cellValueFactory>
+            </TableColumn>
         </columns>
       </TableView>
       <Button fx:id="btnAñadir" layoutX="493.0" layoutY="229.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="67.0" text="Añadir" />

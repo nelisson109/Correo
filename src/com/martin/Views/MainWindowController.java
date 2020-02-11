@@ -103,7 +103,9 @@ public class MainWindowController extends BaseController implements Initializabl
 
     @FXML
     public void pantallaTareas(ActionEvent event){
-
+        VentanaTareasController controller = (VentanaTareasController) cargarDialogo("VentanaTareas.fxml", 500, 500);
+        controller.getStage().setTitle("Gestor de Tareas");
+        controller.abrirDialogo(true);
     }
 
     @FXML

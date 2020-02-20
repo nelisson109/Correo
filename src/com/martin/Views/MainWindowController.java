@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import martin.Reloj;
 
 import javax.mail.Folder;
@@ -24,7 +25,11 @@ import java.util.ResourceBundle;
 
 public class MainWindowController extends BaseController implements Initializable {
 
+    private Stage stage = new Stage();
+
     private IniciarSesion inicio;
+    @FXML
+    private Button help;
     @FXML
     private Button btnCuentas;
     @FXML
@@ -73,9 +78,9 @@ public class MainWindowController extends BaseController implements Initializabl
             treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {//nos suscribimos a cambios
                 @Override
                 public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                   // Logica.getInstance().cargarMensajes(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder());
-                   // tvCorreos.setItems(Logica.getInstance().cargarMensajes(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder()));
-                    HiloMensaje servicio = new HiloMensaje(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder());
+                    // Logica.getInstance().cargarMensajes(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder());
+                    // tvCorreos.setItems(Logica.getInstance().cargarMensajes(((EmailTreeItem)treeView.getSelectionModel().getSelectedItem()).getFolder()));
+                    HiloMensaje servicio = new HiloMensaje(((EmailTreeItem) treeView.getSelectionModel().getSelectedItem()).getFolder());
                     servicio.start();
                     servicio.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
                         @Override
@@ -102,21 +107,21 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     @FXML
-    public void pantallaTareas(ActionEvent event){
+    public void pantallaTareas(ActionEvent event) {
         VentanaTareasController controller = (VentanaTareasController) cargarDialogo("VentanaTareas.fxml", 500, 500);
         controller.getStage().setTitle("Gestor de Tareas");
         controller.abrirDialogo(true);
     }
 
     @FXML
-    public void examen(ActionEvent event){
+    public void examen(ActionEvent event) {
         VentanaComboController controller = (VentanaComboController) cargarDialogo("VentanaCombo.fxml", 400, 400);
         controller.getStage().setTitle("pantalla combo");
         controller.abrirDialogo(true);
     }
 
     @FXML
-    public void borrarEmail(ActionEvent event){
+    public void borrarEmail(ActionEvent event) {
         EmailMensaje mensaje = tvCorreos.getSelectionModel().getSelectedItem();
         EmailTreeItem item = (EmailTreeItem) treeView.getSelectionModel().getSelectedItem();
 
@@ -124,8 +129,9 @@ public class MainWindowController extends BaseController implements Initializabl
         Folder f = ((EmailTreeItem) treeView.getSelectionModel().getSelectedItem()).getFolder();
         tvCorreos.setItems(Logica.getInstance().cargarMensajes(f));
     }
+
     @FXML
-    public void gestionarCuentas(ActionEvent event){
+    public void gestionarCuentas(ActionEvent event) {
         MisCuentasController cuentasController = (MisCuentasController) cargarDialogo("MisCuentas.fxml", 650, 540);
         cuentasController.getStage().setTitle("Iniciar Sesión");
         cuentasController.abrirDialogo(true);
@@ -137,17 +143,16 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     @FXML
-    public void escribir(ActionEvent event){
+    public void escribir(ActionEvent event) {
         EscribirCorreoController nuevoCorreo = (EscribirCorreoController) cargarDialogo("EscribirCorreo.fxml", 750, 600);
         nuevoCorreo.getStage().setTitle("Nuevo Correo");
         nuevoCorreo.abrirDialogo(true);
     }
 
     @FXML
-    public void responder(ActionEvent event){
+    public void responder(ActionEvent event) {
         String remitente;
         remitente = tvCorreos.getSelectionModel().getSelectedItem().getFrom();
-
         EscribirCorreoController nuevoCorreo = (EscribirCorreoController) cargarDialogo("EscribirCorreo.fxml", 750, 600);
         nuevoCorreo.setPara(remitente);
         nuevoCorreo.getStage().setTitle("Responder Correo");
@@ -155,12 +160,17 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     @FXML
-    public void reenviar(ActionEvent event){
+    public void reenviar(ActionEvent event) {
         String contenido = tvCorreos.getSelectionModel().getSelectedItem().getContent();
         EscribirCorreoController nuevoCorreo = (EscribirCorreoController) cargarDialogo("EscribirCorreo.fxml", 750, 600);
         nuevoCorreo.setContenido(contenido);
         nuevoCorreo.getStage().setTitle("Reenviar Correo");
         nuevoCorreo.abrirDialogo(true);
+    }
+
+    public void ayuda() throws Exception {
+        AyudaController ayudaController = new AyudaController();
+        ayudaController.start(stage);
     }
 
 }

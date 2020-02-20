@@ -8,6 +8,8 @@ module Unidad2javaFXejemplo {
     requires java.mail;
     requires commons.email;
     requires Reloj;
+    requires org.docgene.help.jfx;
+
 
     exports com.martin;
     exports com.martin.Logica;

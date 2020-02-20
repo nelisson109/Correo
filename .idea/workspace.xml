@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6311ca9-f39e-4d06-9254-c01434b3d71a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareasController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/articles.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/informeJasper/src/jasper/EmailFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/martin/Views/AyudaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Correo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Correo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,24 +48,25 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reloj" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="last_opened_file_path" value="$USER_HOME$/JAVA-MARTIN LOZA/elasticlunr.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DAM\Desktop\ProyectosDI_MartinLoza\Correo" />
+      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src\com\martin\Views\Res" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.martin" />
       <recent name="Utils" />
       <recent name="Logica" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src\com\martin\Views\Res" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src" />
     </key>
   </component>
   <component name="RunDashboard">

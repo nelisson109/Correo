@@ -15,5 +15,6 @@
     <orderEntry type="library" exported="" name="commons-email-1.4.0" level="application" />
     <orderEntry type="library" scope="TEST" name="org.testfx:testfx-junit:4.0.15-alpha" level="application" />
     <orderEntry type="library" name="relojDigital" level="application" />
+    <orderEntry type="library" name="docGeneJFXHelp" level="application" />
   </component>
 </module>

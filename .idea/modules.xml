@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Correo.iml" filepath="$PROJECT_DIR$/Correo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/informeJasper/informeJasper.iml" filepath="$PROJECT_DIR$/informeJasper/informeJasper.iml" />
     </modules>
   </component>
 </project>

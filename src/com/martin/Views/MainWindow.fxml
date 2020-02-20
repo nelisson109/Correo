@@ -104,6 +104,7 @@
                                           <Button fx:id="btnResponder" mnemonicParsing="false" onAction="#responder" text="Responder" />
                                         <Button fx:id="btnReenviar" mnemonicParsing="false" onAction="#reenviar" text="Reenviar" />
                                           <Button fx:id="btnExamen" mnemonicParsing="false" onAction="#examen" text="examen" />
+                                          <Button fx:id="help" mnemonicParsing="false" onAction="#ayuda" text="ayuda" />
                                       </items>
                                     </ToolBar>
                                 </items>

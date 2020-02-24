@@ -2,6 +2,7 @@ package com.martin.Views;
 
 import com.martin.Logica.Logica;
 import com.martin.Logica.Services.HiloMensaje;
+import com.martin.Models.Email;
 import com.martin.Models.EmailMensaje;
 import com.martin.Models.EmailTreeItem;
 import com.martin.Models.IniciarSesion;
@@ -17,11 +18,16 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import martin.Reloj;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 import javax.mail.Folder;
 import javax.mail.MessagingException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainWindowController extends BaseController implements Initializable {
 
@@ -106,9 +112,38 @@ public class MainWindowController extends BaseController implements Initializabl
         }
     }
 
+    public void imprimirEmail(ActionEvent event){
+        List<Email> listaEmail = new ArrayList<>();
+        EmailMensaje correo = tvCorreos.getSelectionModel().getSelectedItem();
+        Email email = new Email(correo.getFrom(), correo.getSubject(), correo.getContent(), correo.getFecha());
+        listaEmail.add(email);
+
+        if(correo != null){
+            try {
+                JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);
+                Map<String,Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
+                JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeEmail.jasper"), parametros, jrds);
+                JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeEmail.pdf");
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Informe generado");
+                alert.setContentText("El informe ha sido generado correctamente");
+                alert.showAndWait();
+            } catch (JRException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Informe NO generado");
+            alert.setContentText("CUIDADO!! El informe no ha podido ser generado");
+            alert.showAndWait();
+        }
+    }
+
     @FXML
     public void pantallaTareas(ActionEvent event) {
-        VentanaTareasController controller = (VentanaTareasController) cargarDialogo("VentanaTareas.fxml", 500, 500);
+        VentanaTareasController controller = (VentanaTareasController) cargarDialogo("VentanaTareas.fxml", 800, 500);
         controller.getStage().setTitle("Gestor de Tareas");
         controller.abrirDialogo(true);
     }

@@ -31,12 +31,12 @@
                      </children>
                   </HBox>
                   <TreeView fx:id="treeView" layoutY="48.0" prefHeight="468.0" prefWidth="201.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />
-                  <Reloj fx:id="reloj" layoutX="2.0" layoutY="540.0" prefHeight="45.0" prefWidth="200.0" textAlignment="CENTER" textFill="#0b16eb" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="540.0">
+                  <Reloj fx:id="reloj" layoutX="2.0" layoutY="540.0" prefHeight="45.0" prefWidth="200.0" textAlignment="CENTER" textFill="#0b16eb" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </Reloj>
-                  <Button fx:id="btnTareas" layoutX="56.0" layoutY="516.0" mnemonicParsing="false" onAction="#pantallaTareas" prefHeight="25.0" prefWidth="89.0" text="Gestor tareas" />
+                  <Button fx:id="btnTareas" layoutX="56.0" layoutY="516.0" mnemonicParsing="false" onAction="#pantallaTareas" prefHeight="25.0" prefWidth="89.0" text="Gestor tareas" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="56.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -105,6 +105,7 @@
                                         <Button fx:id="btnReenviar" mnemonicParsing="false" onAction="#reenviar" text="Reenviar" />
                                           <Button fx:id="btnExamen" mnemonicParsing="false" onAction="#examen" text="examen" />
                                           <Button fx:id="help" mnemonicParsing="false" onAction="#ayuda" text="ayuda" />
+                                          <Button fx:id="btnImprimirEmail" mnemonicParsing="false" onAction="#imprimirEmail" prefHeight="30.0" prefWidth="68.0" text="Imprimir" />
                                       </items>
                                     </ToolBar>
                                 </items>

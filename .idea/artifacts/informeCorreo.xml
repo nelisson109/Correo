@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="informeCorreo">
+    <output-path>$PROJECT_DIR$/out/artifacts/informeCorreo</output-path>
+    <root id="archive" name="informeCorreo.jar">
+      <element id="module-output" name="DataSource" />
+    </root>
+  </artifact>
+</component>

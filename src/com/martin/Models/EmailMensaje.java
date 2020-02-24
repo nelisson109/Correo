@@ -6,6 +6,7 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.util.Date;
 
 import org.apache.commons.mail.util.MimeMessageParser;
 
@@ -114,6 +115,16 @@ public class EmailMensaje {
         }
         String cadena = String.valueOf(direccion[0]);
         return cadena;
+    }
+
+    public Date getFecha(){
+        Date date = null;
+        try {
+            date = message.getReceivedDate();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
 }

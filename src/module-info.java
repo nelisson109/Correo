@@ -9,6 +9,9 @@ module Unidad2javaFXejemplo {
     requires commons.email;
     requires Reloj;
     requires org.docgene.help.jfx;
+    requires jasperreports;
+    requires java.sql;
+    //requires org.jsoup;
 
 
     exports com.martin;

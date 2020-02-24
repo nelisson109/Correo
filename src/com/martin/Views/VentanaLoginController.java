@@ -65,14 +65,9 @@ public class VentanaLoginController extends BaseController implements Initializa
             Logica.getInstance().cargarCuentas(inicioCuenta);
             getStage().close();
         }else{
-            //alert
+            //alert?
             System.out.println("No se ha podido conectar");
         }
-
-
-       // Logica.getInstance().actualizarTree();//cooper
-
-
     }
 
     @Override

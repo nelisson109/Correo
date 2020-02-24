@@ -63,10 +63,5 @@ public class MisCuentasController extends BaseController implements Initializabl
     @FXML
     public void borrarCuenta(){
         Logica.getInstance().borrarCuenta(tvCuentas.getSelectionModel().getSelectedItem());
-        /*
-        * if(folder!=papelera)-->copiarEmail(folder, papelera);
-        * else
-        * mail.flag(DELETE);
-        * folder.close();*/
     }
 }

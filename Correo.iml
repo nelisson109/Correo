@@ -14,7 +14,8 @@
     <orderEntry type="library" exported="" name="controlsfx-11.0.0" level="application" />
     <orderEntry type="library" exported="" name="commons-email-1.4.0" level="application" />
     <orderEntry type="library" scope="TEST" name="org.testfx:testfx-junit:4.0.15-alpha" level="application" />
-    <orderEntry type="library" name="relojDigital" level="application" />
     <orderEntry type="library" name="docGeneJFXHelp" level="application" />
+    <orderEntry type="library" name="relojDigital" level="application" />
+    <orderEntry type="library" name="net.sf.jasperreports:jasperreports:6.11.0" level="application" />
   </component>
 </module>

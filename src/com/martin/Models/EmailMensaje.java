@@ -117,6 +117,12 @@ public class EmailMensaje {
         return cadena;
     }
 
+    public String getTo() throws MessagingException{
+        Address [] to = message.getReplyTo();
+        String desde = to[0].toString();
+        return desde;
+    }
+
     public Date getFecha(){
         Date date = null;
         try {

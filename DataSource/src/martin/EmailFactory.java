@@ -8,7 +8,7 @@ import java.util.List;
 public class EmailFactory {
     public static List<Email> createListEmail(){
         List<Email> listaEmails = new ArrayList<>();
-        listaEmails.add(new Email("remitente", "asunto", "contenido", Date.valueOf(LocalDate.now())));
+        listaEmails.add(new Email("aa", "aaa", "ssss", Date.valueOf(LocalDate.now())));
         return listaEmails;
     }
 }

@@ -2,39 +2,27 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="informeCorreo" />
+      <artifact name="informeEmailsCarpeta" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6311ca9-f39e-4d06-9254-c01434b3d71a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/informeCorreo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSource/DataSource.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/Email.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/informesCorreo/informeEmail.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Informes/informeEmail.jasper" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Informes/informeEmail.jrxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Models/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailsCarpeta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailsCarpetaFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/martin/Informes/informeEmailsCarpeta.jasper" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/martin/Informes/informeEmailsCarpeta.jrxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/martin/Models/EmailsCarpeta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Correo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Correo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/informeJasper/src/jasper/EmailFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/EmailMensaje.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/EmailMensaje.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSource/src/martin/EmailFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/informesCorreo/informeEmail.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/informesCorreo/informeEmail.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/VentanaLoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Models/EmailMensaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Models/EmailMensaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/AyudaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/AyudaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MisCuentasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MisCuentasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareas.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/VentanaTareasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,16 +55,16 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/martin/Informes" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src\com\martin\Informes" />
-      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DAM\Desktop\ProyectosDI_MartinLoza\Correo" />
+      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src\com\martin\Views\Res" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.martin.Models" />
@@ -84,9 +72,9 @@
       <recent name="Utils" />
       <recent name="Logica" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DAM\Desktop\ProyectosDI_MartinLoza\Correo" />
-      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src\com\martin\Views\Res" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src\com\martin\Informes" />
+      <recent name="C:\Users\Lenovo\Desktop\ProyectosDI_MartinLoza\Correo\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -203,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581335633521</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="primer informe listo">
+      <created>1582568236861</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1582568236861</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -231,7 +226,8 @@
     <MESSAGE value="ready css" />
     <MESSAGE value="trying clock" />
     <MESSAGE value="making taasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="making taasks" />
+    <MESSAGE value="primer informe listo" />
+    <option name="LAST_COMMIT_MESSAGE" value="primer informe listo" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

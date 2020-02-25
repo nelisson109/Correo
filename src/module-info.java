@@ -11,7 +11,7 @@ module Unidad2javaFXejemplo {
     requires org.docgene.help.jfx;
     requires jasperreports;
     requires java.sql;
-    //requires org.jsoup;
+    requires org.jsoup;
 
 
     exports com.martin;

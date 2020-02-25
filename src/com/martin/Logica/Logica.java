@@ -41,26 +41,32 @@ public class Logica {
 
         return INSTANCE;
     }
-    public ObservableList<EmailMensaje> getListaMensajes(){
+
+    public ObservableList<EmailMensaje> getListaMensajes() {
         return listaMensajes;
     }
-    public ObservableList<IniciarSesion> getListaCuentas(){
+
+    public ObservableList<IniciarSesion> getListaCuentas() {
         return listaCuentas;
     }
-    public ObservableList<Tarea> getListaTareas(){
+
+    public ObservableList<Tarea> getListaTareas() {
         return listaTareas;
     }
-    public void añadirTarea(Tarea tarea){
+
+    public void añadirTarea(Tarea tarea) {
         listaTareas.add(tarea);
     }
-    public void borrarTarea(Tarea tarea){
+
+    public void borrarTarea(Tarea tarea) {
         listaTareas.remove(tarea);
     }
 
-    public void cargarCuentas(IniciarSesion inicioCuenta){
+    public void cargarCuentas(IniciarSesion inicioCuenta) {
         listaCuentas.add(inicioCuenta);
     }
-    public void borrarCuenta(IniciarSesion cuenta){
+
+    public void borrarCuenta(IniciarSesion cuenta) {
         listaCuentas.remove(cuenta);
     }
 
@@ -68,63 +74,63 @@ public class Logica {
     private Store store;
     private Folder carpeta;
 
-    public void escribirObjetos(File fichero){
+    public void escribirObjetos(File fichero) {
 
         try {
-            for (IniciarSesion i:misCuentas) {
+            for (IniciarSesion i : misCuentas) {
                 misCuentas2.add(i);
             }
             escritura = new ObjectOutputStream(new FileOutputStream(fichero));
             escritura.writeObject(misCuentas2);
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.getMessage();
             System.out.println("Error. No se encuentra el fichero");
-        }catch(IOException e){
+        } catch (IOException e) {
             e.getMessage();
-        }finally {
-            try{
-                if(escritura!=null){
+        } finally {
+            try {
+                if (escritura != null) {
                     escritura.close();
                 }
-            }catch (IOException e){
+            } catch (IOException e) {
                 System.out.println("Error al cerrar el fichero para escritura");
             }
         }
     }
 
-    public void leerObjetos(File fichero){
+    public void leerObjetos(File fichero) {
         try {
             lectura = new ObjectInputStream(new FileInputStream(fichero));
             misCuentas2 = (ArrayList<IniciarSesion>) lectura.readObject();
-            for (IniciarSesion i:misCuentas2) {
+            for (IniciarSesion i : misCuentas2) {
                 misCuentas.add(i);
             }
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("No se ha encontrado el fichero para leer");
             e.getLocalizedMessage();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.getMessage();
             System.out.println("Error de entrada/salida");
-        }catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             System.out.println("No se ha encontrado la clase");
             e.getLocalizedMessage();
-        }finally {
-            try{
-                if(lectura != null){
+        } finally {
+            try {
+                if (lectura != null) {
                     lectura.close();
                 }
-            }catch(IOException e){
+            } catch (IOException e) {
                 e.getMessage();
                 System.out.println("Error al cerrar el fichero");
             }
         }
     }
 
-    public ObservableList<EmailMensaje> cargarMensajes(Folder folder){
+    public ObservableList<EmailMensaje> cargarMensajes(Folder folder) {
 
         listaMensajes.clear();
         try {
-            if (folder!=null && folder.getType()==3) {
+            if (folder != null && folder.getType() == 3) {
                 if (!folder.isOpen())
                     folder.open(Folder.READ_WRITE);
 
@@ -141,28 +147,28 @@ public class Logica {
     }
 
 
-    public void borrarMensaje(EmailMensaje mensaje, EmailTreeItem item){
-        if (item.getFolder().toString().equals("[Gmail]/Papelera")){
+    public void borrarMensaje(EmailMensaje mensaje, EmailTreeItem item) {
+        if (item.getFolder().toString().equals("[Gmail]/Papelera")) {
             try {
                 mensaje.getMensaje().setFlag(Flags.Flag.DELETED, true);
                 item.getFolder().close();
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-        }else{
-            Message [] vectorMensaje = new Message[]{mensaje.getMensaje()};
+        } else {
+            Message[] vectorMensaje = new Message[]{mensaje.getMensaje()};
             Folder papelera = null;
             try {
                 papelera = item.getStore().getFolder("[Gmail]/Papelera");
                 item.getFolder().copyMessages(vectorMensaje, papelera);
                 item.getFolder().close();
-            }catch (MessagingException e){
+            } catch (MessagingException e) {
                 e.printStackTrace();
             }
         }
     }
 
-   public boolean conexion(IniciarSesion inicio){
+    public boolean conexion(IniciarSesion inicio) {
         boolean respuesta;
         listaMensajes.clear();
         Properties props = new Properties();
@@ -174,22 +180,23 @@ public class Logica {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.port", "587");
         Session sesion = Session.getInstance(props);
-       // String usuario = listaCuentas.get(indice).getUsuario();
+        // String usuario = listaCuentas.get(indice).getUsuario();
         //String contraseña = listaCuentas.get(indice).getContraseña();
         try {
             store = sesion.getStore("imaps");
-          // store.connect("imap.googlemail.com", usuario, contraseña);
+            // store.connect("imap.googlemail.com", usuario, contraseña);
             store.connect("imap.googlemail.com", inicio.getUsuario(), inicio.getContraseña());
             inicio.setStore(store);
             respuesta = true;
             return respuesta;
-        }catch(MessagingException e){
+        } catch (MessagingException e) {
             e.printStackTrace();
             respuesta = false;
             return respuesta;
         }
     }
-    private Session getSession(IniciarSesion cuenta){
+
+    private Session getSession(IniciarSesion cuenta) {
         Properties props = new Properties();
         MailSSLSocketFactory sf = null;
         try {
@@ -217,63 +224,64 @@ public class Logica {
         return session;
     }
 
-    public EmailTreeItem cargarCarpetas() throws MessagingException{
-       EmailTreeItem nodoPadre = new EmailTreeItem(null, null, null, null);
-       for (int i=0; i<listaCuentas.size(); i++){
-           EmailTreeItem itemCuenta = new EmailTreeItem(listaCuentas.get(i), listaCuentas.get(i).getUsuario(), null, listaCuentas.get(i).getStore());
-           nodoPadre.getChildren().add(itemCuenta);
-           try{
-               Folder [] vectorCarpetas = listaCuentas.get(i).getStore().getDefaultFolder().list();
-               itemCuenta.setExpanded(true);
-               llenarCarpetas(vectorCarpetas, itemCuenta, listaCuentas.get(i));
-           }catch (MessagingException e){
-               e.printStackTrace();
-               return null;
-           }
-       }
-       return nodoPadre;
+    public EmailTreeItem cargarCarpetas() throws MessagingException {
+        EmailTreeItem nodoPadre = new EmailTreeItem(null, null, null, null);
+        for (int i = 0; i < listaCuentas.size(); i++) {
+            EmailTreeItem itemCuenta = new EmailTreeItem(listaCuentas.get(i), listaCuentas.get(i).getUsuario(), null, listaCuentas.get(i).getStore());
+            nodoPadre.getChildren().add(itemCuenta);
+            try {
+                Folder[] vectorCarpetas = listaCuentas.get(i).getStore().getDefaultFolder().list();
+                itemCuenta.setExpanded(true);
+                llenarCarpetas(vectorCarpetas, itemCuenta, listaCuentas.get(i));
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return nodoPadre;
     }
-    public void llenarCarpetas(Folder [] vectorCarpetas, EmailTreeItem itemCuenta, IniciarSesion inicio) throws MessagingException{
-        for (Folder folder : vectorCarpetas){
+
+    public void llenarCarpetas(Folder[] vectorCarpetas, EmailTreeItem itemCuenta, IniciarSesion inicio) throws MessagingException {
+        for (Folder folder : vectorCarpetas) {
             //EmailTreeItem nodoRoot = new EmailTreeItem(listaCuentas.get(indice), listaCuentas.get(indice).getUsuario(), carpeta);
             EmailTreeItem item = new EmailTreeItem(inicio, folder.getName(), folder, inicio.getStore());
             itemCuenta.getChildren().add(item);
-            if(folder.list().length>0){
+            if (folder.list().length > 0) {
                 llenarCarpetas(folder.list(), itemCuenta, inicio);
             }
         }
 
     }
 
-    public void escribirCorreo(IniciarSesion cuenta, String desde, String para, String asunto, HTMLEditor contenido){
+    public void escribirCorreo(IniciarSesion cuenta, String desde, String para, String asunto, HTMLEditor contenido) {
         boolean conection;
 
         String contraseña;
-        for(int i=0; i<listaCuentas.size(); i++){
-            if (listaCuentas.get(i).getUsuario().equals(desde)){
+        for (int i = 0; i < listaCuentas.size(); i++) {
+            if (listaCuentas.get(i).getUsuario().equals(desde)) {
                 cuenta = getListaCuentas().get(i);
             }
         }
 //    cuenta = Logica.getInstance().getListaCuentas().get(0);
 
-       // conection = conexion(cuenta);
-       // if (conection) {
-            try {
-                Session a = getSession(cuenta);
-                MimeMessage message = new MimeMessage(a);
-                message.setFrom(new InternetAddress(desde));
-                message.setRecipient(Message.RecipientType.TO, new InternetAddress(para));
-                message.setSubject(asunto);
-              // message.setText(contenido);
-                 message.setContent(contenido.getHtmlText(), "text/html");
+        // conection = conexion(cuenta);
+        // if (conection) {
+        try {
+            Session a = getSession(cuenta);
+            MimeMessage message = new MimeMessage(a);
+            message.setFrom(new InternetAddress(desde));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(para));
+            message.setSubject(asunto);
+            // message.setText(contenido);
+            message.setContent(contenido.getHtmlText(), "text/html");
                 /*Transport transport = cuenta.getSession().getTransport("smtp");
                 transport.connect(cuenta.getUsuario(), cuenta.getContraseña());
                 transport.sendMessage(message, message.getAllRecipients());
                 transport.close();*/
-                Transport.send(message);
-            } catch (MessagingException e) {
-                e.printStackTrace();
-            }
+            Transport.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
         //}
     }
 

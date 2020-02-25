@@ -17,5 +17,6 @@
     <orderEntry type="library" name="docGeneJFXHelp" level="application" />
     <orderEntry type="library" name="relojDigital" level="application" />
     <orderEntry type="library" name="net.sf.jasperreports:jasperreports:6.11.0" level="application" />
+    <orderEntry type="library" name="jsoup-1.12.2" level="application" />
   </component>
 </module>

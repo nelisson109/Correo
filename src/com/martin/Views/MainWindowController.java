@@ -2,10 +2,7 @@ package com.martin.Views;
 
 import com.martin.Logica.Logica;
 import com.martin.Logica.Services.HiloMensaje;
-import com.martin.Models.Email;
-import com.martin.Models.EmailMensaje;
-import com.martin.Models.EmailTreeItem;
-import com.martin.Models.IniciarSesion;
+import com.martin.Models.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.WorkerStateEvent;
@@ -23,10 +20,12 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.jsoup.Jsoup;
 
 import javax.mail.Folder;
 import javax.mail.MessagingException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
 
 public class MainWindowController extends BaseController implements Initializable {
@@ -112,16 +111,18 @@ public class MainWindowController extends BaseController implements Initializabl
         }
     }
 
-    public void imprimirEmail(ActionEvent event){
+    @FXML
+    public void imprimirEmail(ActionEvent event) {//informe para un email
         List<Email> listaEmail = new ArrayList<>();
         EmailMensaje correo = tvCorreos.getSelectionModel().getSelectedItem();
-        Email email = new Email(correo.getFrom(), correo.getSubject(), correo.getContent(), correo.getFecha());
+        String texto = Jsoup.parse(correo.getContent()).text();
+        Email email = new Email(correo.getFrom(), correo.getSubject(), texto, correo.getFecha());
         listaEmail.add(email);
 
-        if(correo != null){
+        if (correo != null) {
             try {
                 JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);
-                Map<String,Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
+                Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
                 JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeEmail.jasper"), parametros, jrds);
                 JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeEmail.pdf");
 
@@ -132,8 +133,7 @@ public class MainWindowController extends BaseController implements Initializabl
             } catch (JRException e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Informe NO generado");
             alert.setContentText("CUIDADO!! El informe no ha podido ser generado");
@@ -142,10 +142,43 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     @FXML
+    public void imprimirCarpeta(ActionEvent event) {//informe para los correos de una carpeta
+        Folder folder = (Folder) treeView.getSelectionModel().getSelectedItem();
+        List<EmailMensaje> lista;
+        lista = tvCorreos.getItems();
+        List<EmailsCarpeta> listaEmail = new ArrayList<>();
+
+        try {
+            for (EmailMensaje e : lista) {
+                String remitente = e.getFrom();
+                String destinatario = e.getTo();
+                String asunto = e.getSubject();
+                Date date = e.getFecha();
+                listaEmail.add(new EmailsCarpeta(remitente, destinatario, asunto, date, folder.toString()));
+            }
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);
+            Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
+            JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeEmailsCarpeta.jasper"), parametros, jrds);
+            JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeEmailsCarpeta.pdf");
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void pantallaTareas(ActionEvent event) {
         VentanaTareasController controller = (VentanaTareasController) cargarDialogo("VentanaTareas.fxml", 800, 500);
         controller.getStage().setTitle("Gestor de Tareas");
         controller.abrirDialogo(true);
+
+
     }
 
     @FXML

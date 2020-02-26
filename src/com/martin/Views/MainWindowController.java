@@ -23,7 +23,9 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.jsoup.Jsoup;
 
 import javax.mail.Folder;
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Store;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -161,6 +163,45 @@ public class MainWindowController extends BaseController implements Initializabl
 
         } catch (MessagingException e) {
             e.printStackTrace();
+        }
+
+        try {
+            JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);
+            Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
+            JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeEmailsCarpeta.jasper"), parametros, jrds);
+            JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeEmailsCarpeta.pdf");
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void imprimirPorCarpetas(ActionEvent event) {
+        //IniciarSesion cuenta;
+        //Store store = cuenta.getStore();
+        Folder [] vectorCarpetas=null;
+
+        List<Folder> listaFolder = Arrays.asList(vectorCarpetas);
+
+        for (int i=0; i<Logica.getInstance().getListaCuentas().size(); i++){
+            try {
+                vectorCarpetas = Logica.getInstance().getListaCuentas().get(i).getStore().getDefaultFolder().list();
+                for (Folder folder:vectorCarpetas) {
+                    Message [] vectorMensajes;
+                    vectorMensajes = folder.getMessages();//mal
+                    List<EmailsCarpeta> listaEmail = new ArrayList<>();
+                    for (EmailMensaje e : vectorMensajes) {
+                        String remitente = e.getFrom();
+                        String destinatario = e.getTo();
+                        String asunto = e.getSubject();
+                        Date date = e.getFecha();
+                        listaEmail.add(new EmailsCarpeta(remitente, destinatario, asunto, date, folder.toString()));
+                    }
+                }
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         }
 
         try {

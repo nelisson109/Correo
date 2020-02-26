@@ -40,14 +40,4 @@ public class EmailsCuenta {
         this.store = store;
     }
 
-    public IMAPFolder getImapFolder (String usuario){
-        IMAPFolder folder = null;
-        try {
-            folder = (IMAPFolder) store.getFolder(usuario);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-
-        return folder;
-    }
 }

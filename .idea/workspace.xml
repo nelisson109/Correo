@@ -7,23 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6311ca9-f39e-4d06-9254-c01434b3d71a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailsCarpeta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailsCarpetaFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Informes/informeEmailsCarpeta.jasper" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Informes/informeEmailsCarpeta.jrxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/martin/Models/EmailsCarpeta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailsCuenta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailsCuentaFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Correo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Correo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSource/src/martin/EmailFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataSource/src/martin/EmailFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/informesCorreo/informeEmail.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/informesCorreo/informeEmail.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Logica/Logica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/EmailMensaje.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Models/EmailMensaje.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Correo/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Logica/Logica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Models/EmailMensaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Models/EmailMensaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582568236861</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="probar segundo informe">
+      <created>1582643988224</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1582643988224</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,9 +228,19 @@
     <MESSAGE value="trying clock" />
     <MESSAGE value="making taasks" />
     <MESSAGE value="primer informe listo" />
-    <option name="LAST_COMMIT_MESSAGE" value="primer informe listo" />
+    <MESSAGE value="probar segundo informe" />
+    <option name="LAST_COMMIT_MESSAGE" value="probar segundo informe" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="tfPara" language="JAVA" />

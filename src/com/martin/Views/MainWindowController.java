@@ -143,7 +143,9 @@ public class MainWindowController extends BaseController implements Initializabl
 
     @FXML
     public void imprimirCarpeta(ActionEvent event) {//informe para los correos de una carpeta
-        Folder folder = (Folder) treeView.getSelectionModel().getSelectedItem();
+        EmailTreeItem item = (EmailTreeItem) treeView.getSelectionModel().getSelectedItem();
+        Folder folder = item.getFolder();
+        //Folder folder = (Folder) treeView.getSelectionModel().getSelectedItem();
         List<EmailMensaje> lista;
         lista = tvCorreos.getItems();
         List<EmailsCarpeta> listaEmail = new ArrayList<>();

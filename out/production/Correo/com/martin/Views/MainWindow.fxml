@@ -64,6 +64,7 @@
                                  </children>
                               </AnchorPane>
                               <Button fx:id="btnCuentas" layoutX="415.0" layoutY="2.0" mnemonicParsing="false" onAction="#gestionarCuentas" text="Cuentas" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
+                              <Button fx:id="btnImprimirCarpeta" layoutX="419.0" layoutY="42.0" mnemonicParsing="false" onAction="#imprimirCarpeta" prefHeight="25.0" prefWidth="58.0" text="print" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

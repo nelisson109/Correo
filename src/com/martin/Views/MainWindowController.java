@@ -180,29 +180,28 @@ public class MainWindowController extends BaseController implements Initializabl
     public void imprimirPorCarpetas(ActionEvent event) {
         //IniciarSesion cuenta;
         //Store store = cuenta.getStore();
-        Folder [] vectorCarpetas=null;
+        Folder[] vectorCarpetas = null;
 
-        List<Folder> listaFolder = Arrays.asList(vectorCarpetas);
-
-        for (int i=0; i<Logica.getInstance().getListaCuentas().size(); i++){
-            try {
-                vectorCarpetas = Logica.getInstance().getListaCuentas().get(i).getStore().getDefaultFolder().list();
-                for (Folder folder:vectorCarpetas) {
-                    Message [] vectorMensajes;
-                    vectorMensajes = folder.getMessages();//mal
-                    List<EmailsCarpeta> listaEmail = new ArrayList<>();
-                    for (EmailMensaje e : vectorMensajes) {
-                        String remitente = e.getFrom();
-                        String destinatario = e.getTo();
-                        String asunto = e.getSubject();
-                        Date date = e.getFecha();
-                        listaEmail.add(new EmailsCarpeta(remitente, destinatario, asunto, date, folder.toString()));
-                    }
+        try {
+            vectorCarpetas = Logica.getInstance().getListaCuentas().get(0).getStore().getDefaultFolder().list();
+            List<Folder> listaFolder = Arrays.asList(vectorCarpetas);
+            for (Folder folder : listaFolder) {
+                List<EmailMensaje> listaMensajes;
+                Message[] vectorMensajes;
+                vectorMensajes = folder.getMessages();//mal
+                List<EmailsCarpeta> listaEmail = new ArrayList<>();
+                for (EmailMensaje e : vectorMensajes) {
+                    String remitente = e.getFrom();
+                    String destinatario = e.getTo();
+                    String asunto = e.getSubject();
+                    Date date = e.getFecha();
+                    listaEmail.add(new EmailsCarpeta(remitente, destinatario, asunto, date, folder.toString()));
                 }
-            } catch (MessagingException e) {
-                e.printStackTrace();
             }
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
+
 
         try {
             JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);

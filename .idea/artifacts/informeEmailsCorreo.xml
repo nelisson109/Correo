@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="informeEmailsCorreo">
+    <output-path>$PROJECT_DIR$/out/artifacts/informeEmailsCorreo</output-path>
+    <root id="archive" name="informeEmailsCorreo.jar">
+      <element id="module-output" name="DataSource" />
+    </root>
+  </artifact>
+</component>

@@ -178,38 +178,49 @@ public class MainWindowController extends BaseController implements Initializabl
 
     @FXML
     public void imprimirPorCarpetas(ActionEvent event) {
-        //IniciarSesion cuenta;
-        //Store store = cuenta.getStore();
-        Folder[] vectorCarpetas = null;
-
+        Store store;
+        store = Logica.getInstance().getListaCuentas().get(0).getStore();
         try {
-            vectorCarpetas = Logica.getInstance().getListaCuentas().get(0).getStore().getDefaultFolder().list();
-            List<Folder> listaFolder = Arrays.asList(vectorCarpetas);
-            for (Folder folder : listaFolder) {
-                List<EmailMensaje> listaMensajes;
-                Message[] vectorMensajes;
-                vectorMensajes = folder.getMessages();//mal
-                List<EmailsCarpeta> listaEmail = new ArrayList<>();
-                for (EmailMensaje e : vectorMensajes) {
-                    String remitente = e.getFrom();
-                    String destinatario = e.getTo();
-                    String asunto = e.getSubject();
-                    Date date = e.getFecha();
-                    listaEmail.add(new EmailsCarpeta(remitente, destinatario, asunto, date, folder.toString()));
-                }
+            Folder[] vectorCarpetas = store.getDefaultFolder().list();
+            for (Folder folder : vectorCarpetas) {
+                cargarCarpetas(folder);
             }
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
 
-
         try {
-            JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);
+            JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmails);
             Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
-            JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeEmailsCarpeta.jasper"), parametros, jrds);
-            JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeEmailsCarpeta.pdf");
+            JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeCorreosCuenta.jasper"), parametros, jrds);
+            JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeCorreosCuenta.pdf");
 
         } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+    private List<EmailMensaje> listaEmailMensaje = new ArrayList<>();
+    private List<EmailsCarpeta> listaEmails = new ArrayList<>();
+    public void cargarCarpetas(Folder folder) {
+        try {
+            if (!folder.isOpen() && folder.getType() == 3) {
+                folder.open(Folder.READ_WRITE);
+                Message[] messages = folder.getMessages();
+                EmailMensaje correo;
+                for (int i = 0; i < messages.length; i++) {
+                    correo = new EmailMensaje(messages[i]);
+                    listaEmailMensaje.add(correo);
+                }
+                for (EmailMensaje e : listaEmailMensaje) {
+                    listaEmails.add(new EmailsCarpeta(e.getFrom(), e.getTo(), e.getSubject(), e.getFecha(), folder.toString()));
+                }
+            } else {
+                for (Folder f : folder.list()) {
+                    cargarCarpetas(folder);
+                }
+            }
+        } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
@@ -219,8 +230,6 @@ public class MainWindowController extends BaseController implements Initializabl
         VentanaTareasController controller = (VentanaTareasController) cargarDialogo("VentanaTareas.fxml", 800, 500);
         controller.getStage().setTitle("Gestor de Tareas");
         controller.abrirDialogo(true);
-
-
     }
 
     @FXML

@@ -30,13 +30,14 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TreeView fx:id="treeView" layoutY="48.0" prefHeight="468.0" prefWidth="201.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />
+                  <TreeView fx:id="treeView" layoutY="48.0" prefHeight="427.0" prefWidth="201.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0" />
                   <Reloj fx:id="reloj" layoutX="2.0" layoutY="540.0" prefHeight="45.0" prefWidth="200.0" textAlignment="CENTER" textFill="#0b16eb" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </Reloj>
                   <Button fx:id="btnTareas" layoutX="56.0" layoutY="516.0" mnemonicParsing="false" onAction="#pantallaTareas" prefHeight="25.0" prefWidth="89.0" text="Gestor tareas" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="56.0" />
+                  <Button fx:id="btnImprimirCuenta" layoutX="47.0" layoutY="475.0" mnemonicParsing="false" onAction="#imprimirPorCarpetas" prefHeight="25.0" prefWidth="118.0" text="Print cuenta" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="47.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

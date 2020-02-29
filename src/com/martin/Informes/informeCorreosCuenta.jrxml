@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informeCorreosCuenta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c90e30d7-d22b-4ceb-9b3e-b2ce723b7963">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="EmailsCarpetaDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="fecha" class="java.util.Date">
+		<fieldDescription><![CDATA[fecha]]></fieldDescription>
+	</field>
+	<field name="asunto" class="java.lang.String">
+		<fieldDescription><![CDATA[asunto]]></fieldDescription>
+	</field>
+	<field name="remitente" class="java.lang.String">
+		<fieldDescription><![CDATA[remitente]]></fieldDescription>
+	</field>
+	<field name="carpeta" class="java.lang.String">
+		<fieldDescription><![CDATA[carpeta]]></fieldDescription>
+	</field>
+	<field name="destinatario" class="java.lang.String">
+		<fieldDescription><![CDATA[destinatario]]></fieldDescription>
+	</field>
+	<variable name="carpeta1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{carpeta}]]></variableExpression>
+	</variable>
+	<variable name="asunto1" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Count">
+		<variableExpression><![CDATA[$F{asunto}]]></variableExpression>
+	</variable>
+	<group name="Group1" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{carpeta}]]></groupExpression>
+		<groupHeader>
+			<band height="69">
+				<staticText>
+					<reportElement x="0" y="40" width="185" height="20" uuid="a8589234-b9f9-4032-abea-9b18f18917a1">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2fe6acb6-136d-448a-8e61-33f68be6f061"/>
+					</reportElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="185" y="40" width="185" height="20" uuid="592c9e06-68b4-4e94-8812-529238559ddf">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1039130f-a1cd-407d-aa06-e0640eab99ba"/>
+					</reportElement>
+					<text><![CDATA[Asunto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="40" width="185" height="20" uuid="8b554546-b9e8-4ca5-9c94-1ddf9162d48b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="48bcc1a9-bd54-4ac5-b88f-2b128efb2769"/>
+					</reportElement>
+					<text><![CDATA[Remitente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="10" width="100" height="16" uuid="f5511c7b-2903-4dbf-b8b8-5450946ead24"/>
+					<text><![CDATA[Carpeta:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="120" y="10" width="100" height="16" uuid="a2c6fc85-5f58-4066-a78d-d336964cd97c"/>
+					<textFieldExpression><![CDATA[$F{carpeta}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="45">
+				<staticText>
+					<reportElement x="20" y="10" width="60" height="20" uuid="ee81ed19-5e83-4aa1-98a6-600785d42fa9"/>
+					<text><![CDATA[La carpeta:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="90" y="10" width="70" height="20" uuid="0987dcb7-c935-43eb-892f-ccb6cc26c368"/>
+					<textFieldExpression><![CDATA[$F{carpeta}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="170" y="10" width="140" height="20" uuid="33282cb1-e9b8-490e-887c-93f4f41724e7"/>
+					<text><![CDATA[tiene un total de correos de:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="320" y="10" width="80" height="20" uuid="3824e340-3e3c-49b6-a554-85b709ac2897"/>
+					<textFieldExpression><![CDATA[$V{asunto1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="50" width="240" height="20" uuid="42d9240b-2d54-4abc-9b9f-77a733ecd077"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME CORREOS DE LA CUENTA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="9" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="13" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="185" height="20" uuid="c6278071-cadd-40bf-9ea7-cba28a4890c6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2fe6acb6-136d-448a-8e61-33f68be6f061"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="185" height="20" uuid="ad7dbbbf-5cc1-4c27-ab81-7ea35ac2f472">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1039130f-a1cd-407d-aa06-e0640eab99ba"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{asunto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="185" height="20" uuid="143e3e0d-0e10-455c-b14a-bd2e4cdc837d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="48bcc1a9-bd54-4ac5-b88f-2b128efb2769"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{remitente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

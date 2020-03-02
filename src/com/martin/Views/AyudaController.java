@@ -13,7 +13,8 @@ public class AyudaController {
     {
         try {
             //File file = new File("C:\\Users\\DAM\\Desktop\\ProyectosDI_MartinLoza\\Correo\\articles.zip");
-            File file = new File("C:\\Users\\Lenovo\\Desktop\\articles.zip");
+            //File file = new File("C:\\Users\\Lenovo\\Desktop\\AyudaCorreo\\articles.zip");
+            File file = new File("articles.zip");
             URL url =file.toURI().toURL();
             JavaHelpFactory factory = new JavaHelpFactory(url);
             factory.create();

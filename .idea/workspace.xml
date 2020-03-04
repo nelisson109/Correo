@@ -8,9 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6311ca9-f39e-4d06-9254-c01434b3d71a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/informesCorreo/informeCorreosCuenta.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/articles.zip" beforeDir="false" afterPath="$PROJECT_DIR$/articles.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/AyudaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/AyudaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/informesCorreo/informeEmail.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/informesCorreo/informeEmail.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/informesCorreo/informeEmailsCarpeta.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/informesCorreo/informeEmailsCarpeta.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Correo/com/martin/Views/MainWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/martin/Views/MainWindowController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +44,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../openjfx/OtherExamples/UT8/UT8_DeployExample" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />

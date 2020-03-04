@@ -165,14 +165,28 @@ public class MainWindowController extends BaseController implements Initializabl
             e.printStackTrace();
         }
 
-        try {
-            JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);
-            Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
-            JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeEmailsCarpeta.jasper"), parametros, jrds);
-            JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeEmailsCarpeta.pdf");
+        if(listaEmail!=null) {
 
-        } catch (JRException e) {
-            e.printStackTrace();
+            try {
+                JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmail);
+                Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
+                JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeEmailsCarpeta.jasper"), parametros, jrds);
+                JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeEmailsCarpeta.pdf");
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Informe generado");
+                alert.setContentText("El informe ha sido generado correctamente");
+                alert.showAndWait();
+
+            } catch (JRException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Informe NO generado");
+            alert.setContentText("CUIDADO!! El informe no ha podido ser generado");
+            alert.showAndWait();
         }
     }
 
@@ -180,9 +194,11 @@ public class MainWindowController extends BaseController implements Initializabl
     public void imprimirPorCarpetas(ActionEvent event) {
         Store store;
         store = Logica.getInstance().getListaCuentas().get(0).getStore();
+        IniciarSesion cuenta = Logica.getInstance().getListaCuentas().get(0);
         try {
             Folder[] vectorCarpetas = store.getDefaultFolder().list();
             for (Folder folder : vectorCarpetas) {
+                System.out.print(folder.getFullName());
                 cargarCarpetas(folder);
             }
 
@@ -190,19 +206,31 @@ public class MainWindowController extends BaseController implements Initializabl
             e.printStackTrace();
         }
 
-        try {
-            JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmails);
-            Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
-            JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeCorreosCuenta.jasper"), parametros, jrds);
-            JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeCorreosCuenta.pdf");
+        if (listaEmails!=null) {
+            try {
+                JRBeanCollectionDataSource jrds = new JRBeanCollectionDataSource(listaEmails);
+                Map<String, Object> parametros = new HashMap<>(); //En este caso no hay parámetros, aunque podría haberlos
+                JasperPrint print = JasperFillManager.fillReport(getClass().getResourceAsStream("/com/martin/Informes/informeCorreosCuenta.jasper"), parametros, jrds);
+                JasperExportManager.exportReportToPdfFile(print, "informesCorreo\\informeCorreosCuenta.pdf");
 
-        } catch (JRException e) {
-            e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Informe generado");
+                alert.setContentText("El informe ha sido generado correctamente");
+                alert.showAndWait();
+            } catch (JRException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Informe NO generado");
+            alert.setContentText("CUIDADO!! El informe no ha podido ser generado");
+            alert.showAndWait();
         }
     }
     private List<EmailMensaje> listaEmailMensaje = new ArrayList<>();
     private List<EmailsCarpeta> listaEmails = new ArrayList<>();
-    public void cargarCarpetas(Folder folder) {
+    private void cargarCarpetas(Folder folder) {
         try {
             if (!folder.isOpen() && folder.getType() == 3) {
                 folder.open(Folder.READ_WRITE);
@@ -217,7 +245,7 @@ public class MainWindowController extends BaseController implements Initializabl
                 }
             } else {
                 for (Folder f : folder.list()) {
-                    cargarCarpetas(folder);
+                    cargarCarpetas(f);
                 }
             }
         } catch (MessagingException e) {

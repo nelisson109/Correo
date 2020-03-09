@@ -54,7 +54,7 @@ public class VentanaTareasController extends BaseController implements Initializ
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tvTareas.setItems(Logica.getInstance().getListaTareas());
         r.comenzar();
-        r.setFormatoHs(false);
+        r.setFormatoHs(true);
         r.añadirAccion(new Accion() {
             @Override
             public void ejecuta(Tarea tarea) {

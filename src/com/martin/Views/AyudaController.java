@@ -9,8 +9,7 @@ import java.net.URL;
 
 public class AyudaController {
     private JFXHelpContentViewer viewer;
-    private void initializeHelp(Stage stage)
-    {
+    private void initializeHelp(Stage stage) {
         try {
             //File file = new File("C:\\Users\\DAM\\Desktop\\ProyectosDI_MartinLoza\\Correo\\articles.zip");
             //File file = new File("C:\\Users\\Lenovo\\Desktop\\AyudaCorreo\\articles.zip");
@@ -20,7 +19,7 @@ public class AyudaController {
             factory.create();
             viewer = new JFXHelpContentViewer();
             factory.install(viewer);
-            viewer.getHelpWindow(stage, "Help Content", 600, 700);
+            viewer.getHelpWindow(stage, "Help Content", 1000, 600);
         }catch (Throwable e)
         {
             e.printStackTrace();
@@ -28,9 +27,9 @@ public class AyudaController {
     }
 
 
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         initializeHelp(primaryStage);
-        viewer.showHelpDialog(500,500);
+        viewer.showHelpDialog(300,200);
 
     }
 }

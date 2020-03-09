@@ -315,7 +315,7 @@ public class MainWindowController extends BaseController implements Initializabl
         nuevoCorreo.abrirDialogo(true);
     }
 
-    public void ayuda() throws Exception {
+    public void ayuda() {
         AyudaController ayudaController = new AyudaController();
         ayudaController.start(stage);
     }

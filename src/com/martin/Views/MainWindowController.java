@@ -13,8 +13,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import martin.Accion;
 import martin.Reloj;
+import martin.Tarea;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -69,6 +72,9 @@ public class MainWindowController extends BaseController implements Initializabl
     @FXML
     private Reloj reloj;
 
+    private List<EmailMensaje> listaEmailMensaje = new ArrayList<>();
+    private List<EmailsCarpeta> listaEmails = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         VentanaLoginController loginController = (VentanaLoginController) cargarDialogo("VentanaLogin.fxml", 500, 400);
@@ -76,6 +82,23 @@ public class MainWindowController extends BaseController implements Initializabl
         loginController.abrirDialogo(true);
 
         reloj.comenzar();
+        reloj.setFormatoHs(true);
+        reloj.añadirAccion(new Accion() {
+            @Override
+            public void ejecuta(Tarea tarea) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("TAREA");
+                String fecha = tarea.getFecha();
+                String hora = String.valueOf(tarea.getHoras());
+                String min = String.valueOf(tarea.getMinutos());
+                alert.setHeaderText(fecha + ", " + hora + ":" + min);
+                alert.setContentText(tarea.getTexto());
+                alert.show();
+                reloj.borrarTarea(tarea);
+                Logica.getInstance().getListaTareas().remove(tarea);
+
+            }
+        });
 
         try {
             EmailTreeItem item = Logica.getInstance().cargarCarpetas();
@@ -228,8 +251,7 @@ public class MainWindowController extends BaseController implements Initializabl
             alert.showAndWait();
         }
     }
-    private List<EmailMensaje> listaEmailMensaje = new ArrayList<>();
-    private List<EmailsCarpeta> listaEmails = new ArrayList<>();
+
     private void cargarCarpetas(Folder folder) {
         try {
             if (!folder.isOpen() && folder.getType() == 3) {
@@ -258,6 +280,12 @@ public class MainWindowController extends BaseController implements Initializabl
         VentanaTareasController controller = (VentanaTareasController) cargarDialogo("VentanaTareas.fxml", 800, 500);
         controller.getStage().setTitle("Gestor de Tareas");
         controller.abrirDialogo(true);
+
+        ArrayList<Tarea> listaTareas = new ArrayList<>();
+        for(int i=0; i<Logica.getInstance().getListaTareas().size(); i++){
+            listaTareas.add(Logica.getInstance().getListaTareas().get(i));
+        }
+        reloj.actualizarLista(listaTareas);
     }
 
     @FXML

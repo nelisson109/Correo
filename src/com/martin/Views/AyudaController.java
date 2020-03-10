@@ -19,7 +19,7 @@ public class AyudaController {
             factory.create();
             viewer = new JFXHelpContentViewer();
             factory.install(viewer);
-            viewer.getHelpWindow(stage, "Help Content", 1000, 600);
+            viewer.getHelpWindow(stage, "Help Content", 900, 500);
         }catch (Throwable e)
         {
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class AyudaController {
 
     public void start(Stage primaryStage) {
         initializeHelp(primaryStage);
-        viewer.showHelpDialog(300,200);
+        viewer.showHelpDialog(350,150);
 
     }
 }

@@ -47,31 +47,10 @@ public class VentanaTareasController extends BaseController implements Initializ
     @FXML
     private TextField tfTexto;
 
-    @FXML
-    private Reloj r;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tvTareas.setItems(Logica.getInstance().getListaTareas());
-        r.comenzar();
-        r.setFormatoHs(true);
-        r.añadirAccion(new Accion() {
-            @Override
-            public void ejecuta(Tarea tarea) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("TAREA");
-                String fecha = tarea.getFecha();
-                String hora = String.valueOf(tarea.getHoras());
-                String min = String.valueOf(tarea.getMinutos());
-                alert.setHeaderText(fecha + ", " + hora + ":" + min);
-                alert.setContentText(tarea.getTexto());
-                alert.show();
-                r.borrarTarea(tarea);
-                Logica.getInstance().getListaTareas().remove(tarea);
-                tvTareas.refresh();
-            }
-        });
-        tvTareas.refresh();
     }
 
 
@@ -90,8 +69,9 @@ public class VentanaTareasController extends BaseController implements Initializ
         fecha = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Tarea tarea = new Tarea(horas, minutos, segundos, fecha, texto);
         Logica.getInstance().añadirTarea(tarea);
-        r.registrarTarea(tarea);//?¿
-        tvTareas.refresh();
+        tvTareas.setItems(Logica.getInstance().getListaTareas());
+
+        //tvTareas.refresh();
         tfHoras.setText("");
         tfMinutos.setText("");
         tfSegundos.setText("");
@@ -102,8 +82,8 @@ public class VentanaTareasController extends BaseController implements Initializ
     @FXML
     public void borrarTarea(ActionEvent event){
         Logica.getInstance().borrarTarea(tvTareas.getSelectionModel().getSelectedItem());
-        r.borrarTarea(tvTareas.getSelectionModel().getSelectedItem());
-        tvTareas.refresh();
+        tvTareas.setItems(Logica.getInstance().getListaTareas());
+        //tvTareas.refresh();
 
     }
 }
